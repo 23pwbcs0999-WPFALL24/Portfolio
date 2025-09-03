@@ -9,10 +9,13 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+    <!-- Remove this if not using Animate.css classes -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> -->
+    <!-- Add GSAP library -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollToPlugin.min.js"></script>
     <style>
       :root {
         --primary: #3b82f6;
@@ -94,138 +97,192 @@
           flex-direction: column;
         }
       }
+      
+      /* Animation classes */
+      .gsap-reveal {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      
+      .gsap-fade {
+        opacity: 0;
+      }
+      
+      .gsap-scale {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      
+      .gsap-slide-left {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      
+      .gsap-slide-right {
+        opacity: 0;
+        transform: translateX(50px);
+      }
     </style>
   </head>
   <body class="bg-gray-50 text-slate-800">
     <div id="root"></div>
 
     <script type="text/babel">
-      const { useState, useEffect } = React;
-const projects = [
-  {
-    id: 1,
-    title: "RAC Community Website",
-    description:
-      "Community platform built with the MERN stack, featuring robotics project showcases, event updates, and interactive community engagement",
-    tags: ["React", "Node.js", "MongoDB", "Express"],
-    image: "images/RAC.png",
-    alt: "img",
-    liveLink: "https://racproject.vercel.app/",
-    sourceCode: "https://github.com/23pwbcs0999-WPFALL24/RAC-Project",
-  },
-  {
-    id: 2,
-    title: "Cart Management",
-    description:
-      "Cart management web app built with React, featuring dynamic product listings, add-to-cart functionality, and real-time cart updates with clean UI design",
-    tags: ["React", "Express", "MongoDB", "NodeJs"],
-    image: "images/cart.png",
-    alt: "img",
-    liveLink: "https://cart-management-frontend-two.vercel.app/", 
-    sourceCode: "https://github.com/23pwbcs0999-WPFALL24/Cart_Management", 
-  },
-  {
-    id: 3,
-    title: "Hostel Management System",
-    description:
-      "Hostel management system built with React and Node.js to efficiently manage rooms, students, allocations, inventory, and visitor records through a user-friendly interface.",
-    tags: ["React", "Express", "Node.js", "MongoDB"],
-    image: "images/hostel.png",
-    alt: "img",
-    liveLink: "https://uet-hostels-mng.vercel.app/", 
-    sourceCode: "https://github.com/23pwbcs0999-WPFALL24/HOSTEL-MANAGEMENT-SYSTEM", 
-  },
-    {
-    id: 4,
-    title: "Word & Character Counter",
-    description:
-      "User friendly Word and character counter",
-    tags: ["HTML", "CSS", "JS"],
-    image: "images/wordC.png",
-    alt: "img",
-    liveLink: "https://wordcounter-swart-ten.vercel.app/", 
-    sourceCode: "https://github.com/23pwbcs0999-WPFALL24/Word-Counter", 
-  },
-      {
-    id: 5,
-    title: "Clock",
-    description:
-      "A digital clock",
-    tags: ["HTML", "CSS", "JS"],
-    image: "images/DigiClo.png",
-    alt: "img",
-    liveLink: "https://digital-clock-ivory-six.vercel.app/", 
-    sourceCode: "https://github.com/23pwbcs0999-WPFALL24/Digital_Clock", 
-  },
+      const { useState, useEffect, useRef } = React;
+      
+      // GSAP Animation Hook
+      const useGsap = (animationSetup, dependencies = []) => {
+        const elementRef = useRef(null);
+        
+        useEffect(() => {
+          if (elementRef.current) {
+            const ctx = gsap.context(animationSetup, elementRef.current);
+            return () => ctx.revert();
+          }
+        }, dependencies);
+        
+        return elementRef;
+      };
+      
+      if (window.gsap && window.ScrollTrigger && window.ScrollToPlugin) {
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+}
+
+      const projects = [
         {
-    id: 6,
-    title: "Stop Watch",
-    description:
-      "",
-    tags: ["HTML", "CSS", "JS"],
-    image: "images/stopWatch.png",
-    alt: "img",
-    liveLink: "https://stopwatch-two-pi.vercel.app/", 
-    sourceCode: "https://github.com/23pwbcs0999-WPFALL24/stopwatch", 
-  },
-          {
-    id: 7,
-    title: "ToDo App",
-    description:
-      "A minimal and elegant Todo app built with React, allowing users to add, complete, and delete tasks with local storage support for persistent data",
-    tags: ["React", "CSS", "Vite","local storage"],
-    image: "images/todo.png",
-    alt: "img",
-    liveLink: "https://todo-app-six-iota-12.vercel.app/", 
-    sourceCode: "https://github.com/23pwbcs0999-WPFALL24/todo_app", 
-  },
-            {
-    id: 8,
-    title: "Drawing App",
-    description:
-      "A browser-based drawing tool that allows users to sketch freely using adjustable brush size and color. Includes features like undo, clear canvas, and save as image. Designed with a sleek, responsive, and modern UI using vanilla web technologies.",
-    tags: ["HTML5 Canvas API", "JS", "CSS3"],
-    image: "images/drawing.png",
-    alt: "img",
-    liveLink: "https://drawing-app-snowy-five.vercel.app/", 
-    sourceCode: "https://github.com/23pwbcs0999-WPFALL24/Drawing-app", 
-  },
-{
-  id: 9,
-  title: "ClimaCast Weather App",
-  description:
-    "A simple React app that shows real-time weather by city using the OpenWeatherMap API. Displays temperature, humidity, wind, and weather conditions with a clean UI and error handling.",
-  tags: ["React", "OpenWeatherMap API", "CSS3"],
-  image: "images/WeatherApp.png",
-  alt: "Weather App Screenshot",
-  liveLink: "https://climacast-azure.vercel.app/", 
-  sourceCode: "https://github.com/23pwbcs0999-WPFALL24/Weather-App",
-},
-{
-  id: 10,
-  title: "Quiz App",
-  description:
-    "An interactive quiz platform built with HTML, Tailwind CSS, and JavaScript. It supports quiz creation, animated transitions (via Animate.css), result tracking with LocalStorage, and responsive SVG progress indicators — all running entirely in the browser.",
-  tags: ["HTML", "Tailwind CSS", "JavaScript", "LocalStorage", "Animate.css"],
-  image: "images/quiz.png",
-  alt: "img",
-  liveLink: "https://brainsparkquiz.vercel.app/",
-  sourceCode: "https://github.com/23pwbcs0999-WPFALL24/Quiz",
-},
-{
-  id: 11,
-  title: "QuickPoll",
-  description:
-    "A secure and user-friendly polling app with token-based voting, IP restriction options, and real-time result tracking, built using the MERN stack.",
-  tags: ["React", "Node.js", "MongoDB", "Express"],
-  image: "images/quickpoll.png", // Replace with your actual image path
-  alt: "QuickPoll Screenshot",
-  liveLink: "https://myquickpoll.vercel.app/", 
-  sourceCode: "https://github.com/23pwbcs0999-WPFALL24/quickpoll", 
-},
-
-
-];
+          id: 1,
+          title: "RAC Community Website",
+          description:
+            "Community platform built with the MERN stack, featuring robotics project showcases, event updates, and interactive community engagement",
+          tags: ["React", "Node.js", "MongoDB", "Express"],
+          image: "images/RAC.png",
+          alt: "img",
+          liveLink: "https://racproject.vercel.app/",
+          sourceCode: "https://github.com/23pwbcs0999-WPFALL24/RAC-Project",
+        },
+        {
+          id: 2,
+          title: "Cart Management",
+          description:
+            "Cart management web app built with React, featuring dynamic product listings, add-to-cart functionality, and real-time cart updates with clean UI design",
+          tags: ["React", "Express", "MongoDB", "NodeJs"],
+          image: "images/cart.png",
+          alt: "img",
+          liveLink: "https://cart-management-frontend-two.vercel.app/", 
+          sourceCode: "https://github.com/23pwbcs0999-WPFALL24/Cart_Management", 
+        },
+        {
+          id: 3,
+          title: "Hostel Management System",
+          description:
+            "Hostel management system built with React and Node.js to efficiently manage rooms, students, allocations, inventory, and visitor records through a user-friendly interface.",
+          tags: ["React", "Express", "Node.js", "MongoDB"],
+          image: "images/hostel.png",
+          alt: "img",
+          liveLink: "https://uet-hostels-mng.vercel.app/", 
+          sourceCode: "https://github.com/23pwbcs0999-WPFALL24/HOSTEL-MANAGEMENT-SYSTEM", 
+        },
+        {
+          id: 4,
+          title: "Word & Character Counter",
+          description:
+            "User friendly Word and character counter",
+          tags: ["HTML", "CSS", "JS"],
+          image: "images/wordC.png",
+          alt: "img",
+          liveLink: "https://wordcounter-swart-ten.vercel.app/", 
+          sourceCode: "https://github.com/23pwbcs0999-WPFALL24/Word-Counter", 
+        },
+        {
+          id: 5,
+          title: "Clock",
+          description:
+            "A digital clock",
+          tags: ["HTML", "CSS", "JS"],
+          image: "images/DigiClo.png",
+          alt: "img",
+          liveLink: "https://digital-clock-ivory-six.vercel.app/", 
+          sourceCode: "https://github.com/23pwbcs0999-WPFALL24/Digital_Clock", 
+        },
+        {
+          id: 6,
+          title: "Stop Watch",
+          description:
+            "",
+          tags: ["HTML", "CSS", "JS"],
+          image: "images/stopWatch.png",
+          alt: "img",
+          liveLink: "https://stopwatch-two-pi.vercel.app/", 
+          sourceCode: "https://github.com/23pwbcs0999-WPFALL24/stopwatch", 
+        },
+        {
+          id: 7,
+          title: "ToDo App",
+          description:
+            "A minimal and elegant Todo app built with React, allowing users to add, complete, and delete tasks with local storage support for persistent data",
+          tags: ["React", "CSS", "Vite","local storage"],
+          image: "images/todo.png",
+          alt: "img",
+          liveLink: "https://todo-app-six-iota-12.vercel.app/", 
+          sourceCode: "https://github.com/23pwbcs0999-WPFALL24/todo_app", 
+        },
+        {
+          id: 8,
+          title: "Drawing App",
+          description:
+            "A browser-based drawing tool that allows users to sketch freely using adjustable brush size and color. Includes features like undo, clear canvas, and save as image. Designed with a sleek, responsive, and modern UI using vanilla web technologies.",
+          tags: ["HTML5 Canvas API", "JS", "CSS3"],
+          image: "images/drawing.png",
+          alt: "img",
+          liveLink: "https://drawing-app-snowy-five.vercel.app/", 
+          sourceCode: "https://github.com/23pwbcs0999-WPFALL24/Drawing-app", 
+        },
+        {
+          id: 9,
+          title: "ClimaCast Weather App",
+          description:
+            "A simple React app that shows real-time weather by city using the OpenWeatherMap API. Displays temperature, humidity, wind, and weather conditions with a clean UI and error handling.",
+          tags: ["React", "OpenWeatherMap API", "CSS3"],
+          image: "images/WeatherApp.png",
+          alt: "Weather App Screenshot",
+          liveLink: "https://climacast-azure.vercel.app/", 
+          sourceCode: "https://github.com/23pwbcs0999-WPFALL24/Weather-App",
+        },
+        {
+          id: 10,
+          title: "Quiz App",
+          description:
+            "An interactive quiz platform built with HTML, Tailwind CSS, and JavaScript. It supports quiz creation, animated transitions (via Animate.css), result tracking with LocalStorage, and responsive SVG progress indicators — all running entirely in the browser.",
+          tags: ["HTML", "Tailwind CSS", "JavaScript", "LocalStorage", "Animate.css"],
+          image: "images/quiz.png",
+          alt: "img",
+          liveLink: "https://brainsparkquiz.vercel.app/",
+          sourceCode: "https://github.com/23pwbcs0999-WPFALL24/Quiz",
+        },
+        {
+          id: 11,
+          title: "QuickPoll",
+          description:
+            "A secure and user-friendly polling app with token-based voting, IP restriction options, and real-time result tracking, built using the MERN stack.",
+          tags: ["React", "Node.js", "MongoDB", "Express"],
+          image: "images/quickpoll.png",
+          alt: "QuickPoll Screenshot",
+          liveLink: "https://myquickpoll.vercel.app/", 
+          sourceCode: "https://github.com/23pwbcs0999-WPFALL24/quickpoll", 
+        },
+                {
+          id: 12,
+          title: "AI Study Buddy",
+          description:
+            "AI Study Buddy – your smart learning companion that helps you stay organized, boost productivity, and make studying easier with AI-powered support.",
+          tags: ["React", "Node.js", "MongoDB", "Express"],
+          image: "images/aii.png", 
+          alt: "QuickPoll Screenshot",
+          liveLink: "#", 
+          sourceCode: "https://github.com/23pwbcs0999-WPFALL24/AI-Study-Buddy", 
+        },
+      ];
+      
       const skills = [
         { name: "React", icon: "⚛️" },
         { name: "Node.js", icon: "🟢" },
@@ -262,11 +319,118 @@ const projects = [
             "Built responsive user interfaces with React and modern CSS.",
         },
       ];
+      
+      // Animated Section Component
+      const AnimatedSection = ({ id, children, className = "" }) => {
+        const sectionRef = useGsap((self) => {
+          // Only animate if elements exist
+          if (self.selector(".gsap-reveal").length) {
+            gsap.to(self.selector(".gsap-reveal"), {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              stagger: 0.2,
+              scrollTrigger: {
+                trigger: self.selector(".gsap-reveal"),
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            });
+          }
+          if (self.selector(".gsap-fade").length) {
+            gsap.to(self.selector(".gsap-fade"), {
+              opacity: 1,
+              duration: 1.2,
+              stagger: 0.15,
+              scrollTrigger: {
+                trigger: self.selector(".gsap-fade"),
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            });
+          }
+          if (self.selector(".gsap-scale").length) {
+            gsap.to(self.selector(".gsap-scale"), {
+              scale: 1,
+              opacity: 1,
+              duration: 1,
+              stagger: 0.1,
+              scrollTrigger: {
+                trigger: self.selector(".gsap-scale"),
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            });
+          }
+          if (self.selector(".gsap-slide-left").length) {
+            gsap.to(self.selector(".gsap-slide-left"), {
+              x: 0,
+              opacity: 1,
+              duration: 0.8,
+              stagger: 0.1,
+              scrollTrigger: {
+                trigger: self.selector(".gsap-slide-left"),
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            });
+          }
+          if (self.selector(".gsap-slide-right").length) {
+            gsap.to(self.selector(".gsap-slide-right"), {
+              x: 0,
+              opacity: 1,
+              duration: 0.8,
+              stagger: 0.1,
+              scrollTrigger: {
+                trigger: self.selector(".gsap-slide-right"),
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            });
+          }
+        });
+        
+        return (
+          <section id={id} ref={sectionRef} className={className}>
+            {children}
+          </section>
+        );
+      };
+      
       const Portfolio = () => {
         const [activeSection, setActiveSection] = useState("home");
         const [scrolled, setScrolled] = useState(false);
+        const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+        const year = new Date().getFullYear();
 
         useEffect(() => {
+          // Initialize GSAP ScrollTrigger
+          gsap.registerPlugin(ScrollTrigger);
+          
+          // Animate hero elements on page load
+          gsap.to(".hero-text", {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            stagger: 0.2,
+            delay: 0.3,
+          });
+          
+          gsap.to(".hero-image", {
+            y: 0,
+            opacity: 1,
+            duration: 1.2,
+            delay: 0.5,
+          });
+          
+          gsap.to(".hero-button", {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.15,
+            delay: 0.8,
+          });
+
           const handleScroll = () => {
             setScrolled(window.scrollY > 50);
             // Update active section based on scroll position
@@ -289,7 +453,14 @@ const projects = [
         const scrollToSection = (sectionId) => {
           const element = document.getElementById(sectionId);
           if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
+            gsap.to(window, {
+              duration: 1,
+              scrollTo: {
+                y: element,
+                offsetY: 70
+              },
+              ease: "power2.inOut"
+            });
             setActiveSection(sectionId);
           }
         };
@@ -310,7 +481,7 @@ const projects = [
                     @afnancodes
                   </span>
                 </div>
-                <div className="hidden md:flex space-x-8">
+                <div className="flex space-x-8">
                   {["home", "about", "skills", "projects", "contact"].map(
                     (item) => (
                       <button
@@ -327,7 +498,11 @@ const projects = [
                     )
                   )}
                 </div>
-                <button className="md:hidden text-slate-700">
+                <button
+                  className="md:hidden text-slate-700 gsap-reveal"
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  aria-label="Open navigation menu"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
@@ -343,23 +518,43 @@ const projects = [
                     />
                   </svg>
                 </button>
+                {mobileMenuOpen && (
+                  <div className="md:hidden absolute top-16 right-6 bg-white shadow-lg rounded-lg p-4 flex flex-col space-y-4 z-50">
+                    {["home", "about", "skills", "projects", "contact"].map((item) => (
+                      <button
+                        key={item}
+                        onClick={() => {
+                          scrollToSection(item);
+                          setMobileMenuOpen(false);
+                        }}
+                        className={`nav-link font-medium ${
+                          activeSection === item
+                            ? "text-blue-500"
+                            : "text-slate-700 hover:text-blue-500"
+                        }`}
+                      >
+                        {item.charAt(0).toUpperCase() + item.slice(1)}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             </nav>
 
             {/* Hero Section */}
             <section
               id="home"
-              className="min-h-screen pt-20 flex items-center justify-center bg-gradient-to-br from-blue-50 to-green-50"
+              className="min-h-screen pt-20 flex items-center justify-center bg-gradient-to-br from-blue-50 to-green-50 overflow-hidden"
             >
               <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 hero-content flex flex-col md:flex-row items-center">
-                <div className="md:w-1/2 mb-12 md:mb-0 animate__animated animate__fadeInLeft">
-                  <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+                <div className="md:w-1/2 mb-12 md:mb-0">
+                  <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
                     Hi, I'm Afnan
                   </h1>
-                  <h2 className="text-2xl md:text-3xl font-semibold text-blue-500 mb-6">
+                  <h2 className="text-2xl md:text-3xl font-semibold text-blue-500 mb-6 hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
                     MERN Stack Developer
                   </h2>
-                  <p className="text-lg text-slate-600 mb-8 max-w-lg">
+                  <p className="text-lg text-slate-600 mb-8 max-w-lg hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
                     I build performant, scalable web applications with modern
                     technologies. Passionate about creating solutions that make
                     an impact.
@@ -367,20 +562,20 @@ const projects = [
                   <div className="flex space-x-4">
                     <button
                       onClick={() => scrollToSection("projects")}
-                      className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all shadow-md hover:shadow-lg"
+                      className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all shadow-md hover:shadow-lg hero-button gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}
                     >
                       View Projects
                     </button>
                     <button
                       onClick={() => scrollToSection("contact")}
-                      className="px-6 py-3 border border-blue-500 text-blue-500 rounded-lg font-medium hover:bg-blue-50 transition-all"
+                      className="px-6 py-3 border border-blue-500 text-blue-500 rounded-lg font-medium hover:bg-blue-50 transition-all hero-button gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}
                     >
                       Contact Me
                     </button>
                   </div>
                 </div>
-                <div className="md:w-1/2 flex justify-center animate__animated animate__fadeInRight">
-                  <div className="relative">
+                <div className="md:w-1/2 flex justify-center">
+                  <div className="relative hero-image" style={{ opacity: 0, transform: "translateY(30px)" }}>
                     <img
                       src="images/1234-removebg-preview (2).png"
                       alt="Professional developer working on laptop with code editor visible on screen"
@@ -392,16 +587,16 @@ const projects = [
             </section>
 
             {/* About Section */}
-            <section id="about" className="py-20 bg-white">
+            <AnimatedSection id="about" className="py-20 bg-white">
               <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-3xl font-bold text-center mb-4 text-slate-800">
+                <h2 className="text-3xl font-bold text-center mb-4 text-slate-800 gsap-reveal">
                   About Me
                 </h2>
-                <div className="w-20 h-1 bg-blue-500 mx-auto mb-12"></div>
+                <div className="w-20 h-1 bg-blue-500 mx-auto mb-12 gsap-reveal"></div>
 
                 <div className="flex flex-col md:flex-row gap-12">
                   {/* Left Section */}
-                  <div className="md:w-1/2">
+                  <div className="md:w-1/2 gsap-slide-left">
                     <h3 className="text-2xl font-semibold mb-4 text-slate-700">
                       Who I Am
                     </h3>
@@ -424,15 +619,15 @@ const projects = [
                   </div>
 
                   {/* Right Section (Stats or Achievements) */}
-                  <div className="md:w-1/2 flex items-center justify-center">
+                  <div className="md:w-1/2 flex items-center justify-center gsap-slide-right">
                     <div className="flex flex-wrap gap-6">
-                      <div className="bg-blue-50 p-6 rounded-lg text-center shadow-sm">
+                      <div className="bg-blue-50 p-6 rounded-lg text-center shadow-sm gsap-scale">
                         <h4 className="text-2xl font-bold text-blue-500">
                           10+
                         </h4>
                         <p className="text-slate-600">Projects Completed</p>
                       </div>
-                      <div className="bg-blue-50 p-6 rounded-lg text-center shadow-sm">
+                      <div className="bg-blue-50 p-6 rounded-lg text-center shadow-sm gsap-scale">
                         <h4 className="text-2xl font-bold text-blue-500">8+</h4>
                         <p className="text-slate-600">Technologies Mastered</p>
                       </div>
@@ -440,21 +635,21 @@ const projects = [
                   </div>
                 </div>
               </div>
-            </section>
+            </AnimatedSection>
 
             {/* Skills Section */}
-            <section id="skills" className="py-20 bg-gray-50">
+            <AnimatedSection id="skills" className="py-20 bg-gray-50">
               <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-3xl font-bold text-center mb-4 text-slate-800">
+                <h2 className="text-3xl font-bold text-center mb-4 text-slate-800 gsap-reveal">
                   My Skills
                 </h2>
-                <div className="w-20 h-1 bg-blue-500 mx-auto mb-12"></div>
+                <div className="w-20 h-1 bg-blue-500 mx-auto mb-12 gsap-reveal"></div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
                   {skills.map((skill, index) => (
                     <div
                       key={index}
-                      className="tech-icon bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg cursor-default"
+                      className="tech-icon bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg cursor-default gsap-scale"
                     >
                       <div className="text-4xl mb-3">{skill.icon}</div>
                       <h3 className="font-medium text-slate-700">
@@ -465,10 +660,10 @@ const projects = [
                 </div>
 
                 <div className="mt-16">
-                  <h3 className="text-2xl font-semibold text-center mb-8 text-slate-700">
+                  <h3 className="text-2xl font-semibold text-center mb-8 text-slate-700 gsap-reveal">
                     Tech Stack Highlights
                   </h3>
-                  <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
+                  <div className="bg-white rounded-xl shadow-md p-6 md:p-8 gsap-fade">
                     <div className="flex flex-col md:flex-row gap-8">
                       <div className="md:w-1/3">
                         <h4 className="font-bold text-lg text-blue-500 mb-3">
@@ -650,21 +845,22 @@ const projects = [
                   </div>
                 </div>
               </div>
-            </section>
+            </AnimatedSection>
 
             {/* Projects Section */}
-            <section id="projects" className="py-20 bg-white">
+            <AnimatedSection id="projects" className="py-20 bg-white">
               <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-3xl font-bold text-center mb-4 text-slate-800">
+                <h2 className="text-3xl font-bold text-center mb-4 text-slate-800 gsap-reveal">
                   My Projects
                 </h2>
-                <div className="w-20 h-1 bg-blue-500 mx-auto mb-12"></div>
+                <div className="w-20 h-1 bg-blue-500 mx-auto mb-12 gsap-reveal"></div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {projects.map((project) => (
+                  {projects.map((project, index) => (
                     <div
                       key={project.id}
-                      className="project-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100"
+                      className="project-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 gsap-fade"
+                      style={{ transitionDelay: `${index * 0.1}s` }}
                     >
                       <div className="card-inner">
                         <img
@@ -694,23 +890,21 @@ const projects = [
                             ))}
                           </div>
                           <div className="mt-4 flex space-x-3">
-<a
-  href={project.liveLink}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-sm bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
->
-  View Project
-</a>
-<a
-  href={project.sourceCode}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-sm border border-blue-500 text-blue-500 px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors"
->
-  Source Code
-</a>
-
+                            <a
+                              href={project.liveLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+                            >                              View Project
+                            </a>
+                            <a
+                              href={project.sourceCode}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm border border-blue-500 text-blue-500 px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors"
+                            >
+                              Source Code
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -718,22 +912,21 @@ const projects = [
                   ))}
                 </div>
               </div>
-            </section>
+            </AnimatedSection>
 
             {/* Contact Section */}
-            <section id="contact" className="py-20 bg-gray-50">
+            <AnimatedSection id="contact" className="py-20 bg-gray-50">
               <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-3xl font-bold text-center mb-4 text-slate-800">
+                <h2 className="text-3xl font-bold text-center mb-4 text-slate-800 gsap-reveal">
                   Get In Touch
                 </h2>
-                <div className="w-20 h-1 bg-blue-500 mx-auto mb-12"></div>
+                <div className="w-20 h-1 bg-blue-500 mx-auto mb-12 gsap-reveal"></div>
 
                 <div className="flex flex-col md:flex-row gap-12">
-                  <div className="md:w-1/2">
+                  <div className="md:w-1/2 gsap-slide-left">
                     <h3 className="text-2xl font-semibold mb-6 text-slate-700">
                       Contact Information
                     </h3>
-
                     <div className="space-y-6">
                       <div className="flex items-start">
                         <div className="bg-blue-100 p-3 rounded-lg mr-4">
@@ -759,7 +952,6 @@ const projects = [
                           </p>
                         </div>
                       </div>
-
                       <div className="flex items-start">
                         <div className="bg-blue-100 p-3 rounded-lg mr-4">
                           <svg
@@ -782,7 +974,6 @@ const projects = [
                           <p className="text-slate-600">+92 3141858209</p>
                         </div>
                       </div>
-
                       <div className="flex items-start">
                         <div className="bg-blue-100 p-3 rounded-lg mr-4">
                           <svg
@@ -814,7 +1005,6 @@ const projects = [
                         </div>
                       </div>
                     </div>
-
                     <div className="mt-8">
                       <h4 className="font-medium text-slate-700 mb-4">
                         Connect with me
@@ -823,8 +1013,11 @@ const projects = [
                         <a
                           href="https://www.linkedin.com/in/muhammad-afnan-033273373/"
                           target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="LinkedIn"
                           className="bg-blue-100 p-3 rounded-full hover:bg-blue-200 transition-colors"
                         >
+                          {/* LinkedIn SVG */}
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5 text-blue-500"
@@ -839,6 +1032,7 @@ const projects = [
                           target="_blank"
                           className="bg-blue-100 p-3 rounded-full hover:bg-blue-200 transition-colors"
                         >
+                          {/* GitHub SVG */}
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5 text-blue-500"
@@ -853,6 +1047,7 @@ const projects = [
                           target="_blank"
                           className="bg-blue-100 p-3 rounded-full hover:bg-blue-200 transition-colors"
                         >
+                          {/* Twitter SVG */}
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5 text-blue-500"
@@ -865,8 +1060,7 @@ const projects = [
                       </div>
                     </div>
                   </div>
-
-                  <div className="md:w-1/2">
+                  <div className="md:w-1/2 gsap-slide-right">
                     <form
                       className="bg-white p-8 rounded-xl shadow-md space-y-6"
                       onSubmit={async (e) => {
@@ -916,7 +1110,7 @@ const projects = [
                   </div>
                 </div>
               </div>
-            </section>
+            </AnimatedSection>
 
             {/* Footer */}
             <footer className="bg-slate-800 text-white py-8">
@@ -927,7 +1121,7 @@ const projects = [
                   </span>
                 </div>
                 <p className="mb-6">
-                  © {new Date().getFullYear()} All Rights Reserved
+                  © {year} All Rights Reserved
                 </p>
                 <div className="flex justify-center space-x-6">
                   <a
