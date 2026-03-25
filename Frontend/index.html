@@ -18,10 +18,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollToPlugin.min.js"></script>
     <style>
       :root {
-        --primary: #3b82f6;
-        --secondary: #10b981;
-        --dark: #1e293b;
-        --light: #f8fafc;
+        --primary: #6366f1;
+        --secondary: #14b8a6;
+        --dark: #0f172a;
+        --light: #f1f5f9;
       }
 
       @keyframes float {
@@ -124,7 +124,7 @@
       }
     </style>
   </head>
-  <body class="bg-gray-50 text-slate-800">
+  <body class="bg-slate-950 text-slate-100">
     <div id="root"></div>
 
     <script type="text/babel">
@@ -471,26 +471,26 @@
             <nav
               className={`fixed w-full z-50 transition-all duration-300 ${
                 scrolled
-                  ? "bg-white shadow-md py-3"
-                  : "bg-white/90 backdrop-blur-sm py-4"
+                  ? "bg-slate-900/95 border-b border-slate-800 shadow-lg py-3"
+                  : "bg-slate-950/70 backdrop-blur-lg py-4"
               }`}
             >
               <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
                 <div className="flex items-center">
-                  <span className="text-xl font-bold text-blue-500">
+                  <span className="text-xl font-bold text-cyan-400">
                     @afnancodes
                   </span>
                 </div>
-                <div className="flex space-x-8">
+                <div className="hidden md:flex items-center space-x-8">
                   {["home", "about", "skills", "projects", "contact"].map(
                     (item) => (
                       <button
                         key={item}
                         onClick={() => scrollToSection(item)}
-                        className={`nav-link font-medium ${
+                        className={`nav-link font-medium tracking-wide ${
                           activeSection === item
-                            ? "text-blue-500"
-                            : "text-slate-700 hover:text-blue-500"
+                            ? "text-cyan-400"
+                            : "text-slate-200 hover:text-cyan-300"
                         }`}
                       >
                         {item.charAt(0).toUpperCase() + item.slice(1)}
@@ -498,8 +498,16 @@
                     )
                   )}
                 </div>
+                <div className="hidden md:flex items-center space-x-4">
+                  <button
+                    onClick={() => scrollToSection("contact")}
+                    className="px-4 py-2 rounded-full border border-cyan-400 text-cyan-300 text-sm font-semibold hover:bg-cyan-500/20 transition-all"
+                  >
+                    Book a Call
+                  </button>
+                </div>
                 <button
-                  className="md:hidden text-slate-700 gsap-reveal"
+                  className="md:hidden text-slate-100 gsap-reveal"
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                   aria-label="Open navigation menu"
                 >
@@ -519,7 +527,7 @@
                   </svg>
                 </button>
                 {mobileMenuOpen && (
-                  <div className="md:hidden absolute top-16 right-6 bg-white shadow-lg rounded-lg p-4 flex flex-col space-y-4 z-50">
+                  <div className="md:hidden absolute top-16 right-6 bg-slate-900/95 border border-slate-800 shadow-2xl rounded-xl p-4 flex flex-col space-y-4 z-50">
                     {["home", "about", "skills", "projects", "contact"].map((item) => (
                       <button
                         key={item}
@@ -529,13 +537,24 @@
                         }}
                         className={`nav-link font-medium ${
                           activeSection === item
-                            ? "text-blue-500"
-                            : "text-slate-700 hover:text-blue-500"
+                            ? "text-cyan-400"
+                            : "text-slate-200 hover:text-cyan-300"
                         }`}
                       >
                         {item.charAt(0).toUpperCase() + item.slice(1)}
                       </button>
                     ))}
+                    <div className="pt-3 border-t border-slate-800 space-y-3">
+                      <button
+                        onClick={() => {
+                          scrollToSection("contact");
+                          setMobileMenuOpen(false);
+                        }}
+                        className="w-full px-4 py-2 rounded-full border border-cyan-400 text-cyan-300 text-sm font-semibold hover:bg-cyan-500/20 transition-all"
+                      >
+                        Book a Call
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>
@@ -544,42 +563,46 @@
             {/* Hero Section */}
             <section
               id="home"
-              className="min-h-screen pt-20 flex items-center justify-center bg-gradient-to-br from-blue-50 to-green-50 overflow-hidden"
+              className="min-h-screen pt-24 flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden"
             >
               <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 hero-content flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 mb-12 md:mb-0">
-                  <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
-                    Hi, I'm Afnan
+                  <span className="inline-flex items-center px-3 py-1 mb-6 text-xs font-semibold tracking-widest uppercase rounded-full bg-cyan-500/10 text-cyan-300 hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
+                    Full-Stack Product Engineer
+                  </span>
+                  <h1 className="text-4xl md:text-5xl font-bold leading-tight text-slate-100 mb-4 hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
+                    I design, build, and scale modern MERN experiences.
                   </h1>
-                  <h2 className="text-2xl md:text-3xl font-semibold text-blue-500 mb-6 hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
-                    MERN Stack Developer
+                  <h2 className="text-xl md:text-2xl font-semibold text-cyan-300 mb-6 hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
+                    Partnering with startups and teams to ship resilient products faster.
                   </h2>
-                  <p className="text-lg text-slate-600 mb-8 max-w-lg hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
-                    I build performant, scalable web applications with modern
-                    technologies. Passionate about creating solutions that make
-                    an impact.
+                  <p className="text-lg text-slate-300 mb-10 max-w-xl hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
+                    I craft end-to-end solutions—architecture, APIs, data layers, and front-end polish—while championing performance, accessibility, and maintainable engineering workflows.
                   </p>
-                  <div className="flex space-x-4">
+                  <div className="flex flex-wrap gap-4">
                     <button
                       onClick={() => scrollToSection("projects")}
-                      className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all shadow-md hover:shadow-lg hero-button gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}
+                      className="px-7 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 text-white font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/60 transition-all hero-button gsap-reveal"
+                      style={{ opacity: 0, transform: "translateY(30px)" }}
                     >
-                      View Projects
+                      Explore Recent Work
                     </button>
                     <button
                       onClick={() => scrollToSection("contact")}
-                      className="px-6 py-3 border border-blue-500 text-blue-500 rounded-lg font-medium hover:bg-blue-50 transition-all hero-button gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}
+                      className="px-7 py-3 rounded-full border border-cyan-400 text-cyan-200 font-semibold hover:bg-cyan-500/20 transition-all hero-button gsap-reveal"
+                      style={{ opacity: 0, transform: "translateY(30px)" }}
                     >
-                      Contact Me
+                      Start a Project
                     </button>
                   </div>
                 </div>
                 <div className="md:w-1/2 flex justify-center">
                   <div className="relative hero-image" style={{ opacity: 0, transform: "translateY(30px)" }}>
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-500/40 via-sky-500/40 to-sky-500/40 blur-3xl"></div>
                     <img
                       src="images/1234-removebg-preview (2).png"
                       alt="Professional developer working on laptop with code editor visible on screen"
-                      className="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover border-4 border-white shadow-xl animate-[float_6s_ease-in-out_infinite]"
+                      className="relative rounded-full w-64 h-64 md:w-80 md:h-80 object-cover border-4 border-slate-900 shadow-[0_20px_45px_-15px_rgba(99,102,241,0.6)] animate-[float_6s_ease-in-out_infinite]"
                     />
                   </div>
                 </div>
@@ -587,31 +610,31 @@
             </section>
 
             {/* About Section */}
-            <AnimatedSection id="about" className="py-20 bg-white">
+            <AnimatedSection id="about" className="py-20 bg-slate-900">
               <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-3xl font-bold text-center mb-4 text-slate-800 gsap-reveal">
+                <h2 className="text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">
                   About Me
                 </h2>
-                <div className="w-20 h-1 bg-blue-500 mx-auto mb-12 gsap-reveal"></div>
+                <div className="w-28 h-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 mx-auto mb-12 rounded-full gsap-reveal"></div>
 
                 <div className="flex flex-col md:flex-row gap-12">
                   {/* Left Section */}
                   <div className="md:w-1/2 gsap-slide-left">
-                    <h3 className="text-2xl font-semibold mb-4 text-slate-700">
+                    <h3 className="text-2xl font-semibold mb-4 text-slate-100">
                       Who I Am
                     </h3>
-                    <p className="text-slate-600 mb-6">
+                    <p className="text-slate-300 mb-6">
                       I'm a Computer Science student and passionate MERN stack
-                      developer who loves building full-stack web applications .
+                      developer who loves building full-stack web applications.
                       I enjoy turning ideas into real-world projects using clean
                       and efficient code.
                     </p>
-                    <p className="text-slate-600 mb-6">
+                    <p className="text-slate-300 mb-6">
                       I specialize in creating responsive, user-friendly
                       interfaces with React and developing scalable backend
                       systems using Node.js, Express, and MongoDB.
                     </p>
-                    <p className="text-slate-600">
+                    <p className="text-slate-300">
                       Currently, I’m expanding my skills by learning Machine
                       Learning and exploring how to integrate it into modern web
                       apps.
@@ -621,15 +644,15 @@
                   {/* Right Section (Stats or Achievements) */}
                   <div className="md:w-1/2 flex items-center justify-center gsap-slide-right">
                     <div className="flex flex-wrap gap-6">
-                      <div className="bg-blue-50 p-6 rounded-lg text-center shadow-sm gsap-scale">
-                        <h4 className="text-2xl font-bold text-blue-500">
+                      <div className="bg-slate-800/80 backdrop-blur p-6 rounded-2xl text-center shadow-lg shadow-cyan-900/40 border border-slate-700 gsap-scale">
+                        <h4 className="text-2xl font-bold text-cyan-300">
                           10+
                         </h4>
-                        <p className="text-slate-600">Projects Completed</p>
+                        <p className="text-slate-300">Projects Delivered</p>
                       </div>
-                      <div className="bg-blue-50 p-6 rounded-lg text-center shadow-sm gsap-scale">
-                        <h4 className="text-2xl font-bold text-blue-500">8+</h4>
-                        <p className="text-slate-600">Technologies Mastered</p>
+                      <div className="bg-slate-800/80 backdrop-blur p-6 rounded-2xl text-center shadow-lg shadow-cyan-900/40 border border-slate-700 gsap-scale">
+                        <h4 className="text-2xl font-bold text-cyan-300">8+</h4>
+                        <p className="text-slate-300">Technologies Mastered</p>
                       </div>
                     </div>
                   </div>
@@ -638,21 +661,21 @@
             </AnimatedSection>
 
             {/* Skills Section */}
-            <AnimatedSection id="skills" className="py-20 bg-gray-50">
+            <AnimatedSection id="skills" className="py-20 bg-slate-950">
               <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-3xl font-bold text-center mb-4 text-slate-800 gsap-reveal">
+                <h2 className="text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">
                   My Skills
                 </h2>
-                <div className="w-20 h-1 bg-blue-500 mx-auto mb-12 gsap-reveal"></div>
+                <div className="w-28 h-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 mx-auto mb-12 rounded-full gsap-reveal"></div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
                   {skills.map((skill, index) => (
                     <div
                       key={index}
-                      className="tech-icon bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg cursor-default gsap-scale"
+                      className="tech-icon bg-slate-900/70 backdrop-blur p-6 rounded-xl shadow-lg shadow-cyan-900/40 border border-slate-800 text-center hover:shadow-cyan-500/40 cursor-default gsap-scale"
                     >
                       <div className="text-4xl mb-3">{skill.icon}</div>
-                      <h3 className="font-medium text-slate-700">
+                      <h3 className="font-medium text-slate-200">
                         {skill.name}
                       </h3>
                     </div>
@@ -660,18 +683,18 @@
                 </div>
 
                 <div className="mt-16">
-                  <h3 className="text-2xl font-semibold text-center mb-8 text-slate-700 gsap-reveal">
+                  <h3 className="text-2xl font-semibold text-center mb-8 text-slate-100 gsap-reveal">
                     Tech Stack Highlights
                   </h3>
-                  <div className="bg-white rounded-xl shadow-md p-6 md:p-8 gsap-fade">
+                  <div className="bg-slate-900/80 backdrop-blur rounded-2xl border border-slate-800 shadow-xl shadow-cyan-900/40 p-6 md:p-8 gsap-fade">
                     <div className="flex flex-col md:flex-row gap-8">
                       <div className="md:w-1/3">
-                        <h4 className="font-bold text-lg text-blue-500 mb-3">
+                        <h4 className="font-bold text-lg text-cyan-300 mb-3">
                           Frontend
                         </h4>
-                        <ul className="space-y-2 text-slate-600">
+                        <ul className="space-y-3 text-slate-300">
                           <li className="flex items-center">
-                            <span className="bg-blue-100 text-blue-600 rounded-full p-1 mr-2">
+                            <span className="bg-cyan-500/10 text-cyan-300 rounded-full p-1 mr-2">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-4 w-4"
@@ -688,7 +711,7 @@
                             React & Next.js
                           </li>
                           <li className="flex items-center">
-                            <span className="bg-blue-100 text-blue-600 rounded-full p-1 mr-2">
+                            <span className="bg-cyan-500/10 text-cyan-300 rounded-full p-1 mr-2">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-4 w-4"
@@ -725,12 +748,12 @@
                       </div>
 
                       <div className="md:w-1/3">
-                        <h4 className="font-bold text-lg text-green-500 mb-3">
+                        <h4 className="font-bold text-lg text-sky-300 mb-3">
                           Backend
                         </h4>
-                        <ul className="space-y-2 text-slate-600">
+                        <ul className="space-y-3 text-slate-300">
                           <li className="flex items-center">
-                            <span className="bg-green-100 text-green-600 rounded-full p-1 mr-2">
+                            <span className="bg-sky-500/10 text-sky-300 rounded-full p-1 mr-2">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-4 w-4"
@@ -747,7 +770,7 @@
                             Node.js & Express
                           </li>
                           <li className="flex items-center">
-                            <span className="bg-green-100 text-green-600 rounded-full p-1 mr-2">
+                            <span className="bg-sky-500/10 text-sky-300 rounded-full p-1 mr-2">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-4 w-4"
@@ -764,7 +787,7 @@
                             REST & GraphQL APIs
                           </li>
                           <li className="flex items-center">
-                            <span className="bg-green-100 text-green-600 rounded-full p-1 mr-2">
+                            <span className="bg-sky-500/10 text-sky-300 rounded-full p-1 mr-2">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-4 w-4"
@@ -784,12 +807,12 @@
                       </div>
 
                       <div className="md:w-1/3">
-                        <h4 className="font-bold text-lg text-purple-500 mb-3">
+                        <h4 className="font-bold text-lg text-sky-300 mb-3">
                           Database
                         </h4>
-                        <ul className="space-y-2 text-slate-600">
+                        <ul className="space-y-3 text-slate-300">
                           <li className="flex items-center">
-                            <span className="bg-purple-100 text-purple-600 rounded-full p-1 mr-2">
+                            <span className="bg-sky-500/10 text-sky-300 rounded-full p-1 mr-2">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-4 w-4"
@@ -806,7 +829,7 @@
                             MongoDB & Mongoose
                           </li>
                           <li className="flex items-center">
-                            <span className="bg-purple-100 text-purple-600 rounded-full p-1 mr-2">
+                            <span className="bg-sky-500/10 text-sky-300 rounded-full p-1 mr-2">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-4 w-4"
@@ -823,7 +846,7 @@
                             PostgreSQL
                           </li>
                           <li className="flex items-center">
-                            <span className="bg-purple-100 text-purple-600 rounded-full p-1 mr-2">
+                            <span className="bg-sky-500/10 text-sky-300 rounded-full p-1 mr-2">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-4 w-4"
@@ -848,18 +871,18 @@
             </AnimatedSection>
 
             {/* Projects Section */}
-            <AnimatedSection id="projects" className="py-20 bg-white">
+            <AnimatedSection id="projects" className="py-20 bg-slate-900">
               <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-3xl font-bold text-center mb-4 text-slate-800 gsap-reveal">
+                <h2 className="text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">
                   My Projects
                 </h2>
-                <div className="w-20 h-1 bg-blue-500 mx-auto mb-12 gsap-reveal"></div>
+                <div className="w-28 h-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 mx-auto mb-12 rounded-full gsap-reveal"></div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {projects.map((project, index) => (
                     <div
                       key={project.id}
-                      className="project-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 gsap-fade"
+                      className="project-card bg-slate-900/70 backdrop-blur rounded-2xl overflow-hidden shadow-xl shadow-cyan-900/40 border border-slate-800 gsap-fade"
                       style={{ transitionDelay: `${index * 0.1}s` }}
                     >
                       <div className="card-inner">
@@ -873,17 +896,17 @@
                           }}
                         />
                         <div className="p-6">
-                          <h3 className="text-xl font-bold mb-2 text-slate-800">
+                          <h3 className="text-xl font-bold mb-2 text-slate-100">
                             {project.title}
                           </h3>
-                          <p className="text-slate-600 mb-4">
+                          <p className="text-slate-300 mb-4">
                             {project.description}
                           </p>
                           <div className="flex flex-wrap gap-2">
                             {project.tags.map((tag, index) => (
                               <span
                                 key={index}
-                                className="text-xs bg-blue-100 text-blue-600 px-3 py-1 rounded-full"
+                                className="text-xs bg-cyan-500/10 text-cyan-300 px-3 py-1 rounded-full border border-cyan-400/30"
                               >
                                 {tag}
                               </span>
@@ -894,14 +917,14 @@
                               href={project.liveLink}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-sm bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+                              className="text-sm px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 text-white font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/60 transition-all"
                             >                              View Project
                             </a>
                             <a
                               href={project.sourceCode}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-sm border border-blue-500 text-blue-500 px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors"
+                              className="text-sm border border-cyan-400 text-cyan-200 px-4 py-2 rounded-full font-semibold hover:bg-cyan-500/20 transition-all"
                             >
                               Source Code
                             </a>
@@ -915,24 +938,24 @@
             </AnimatedSection>
 
             {/* Contact Section */}
-            <AnimatedSection id="contact" className="py-20 bg-gray-50">
+            <AnimatedSection id="contact" className="py-20 bg-slate-950">
               <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-3xl font-bold text-center mb-4 text-slate-800 gsap-reveal">
+                <h2 className="text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">
                   Get In Touch
                 </h2>
-                <div className="w-20 h-1 bg-blue-500 mx-auto mb-12 gsap-reveal"></div>
+                <div className="w-28 h-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 mx-auto mb-12 rounded-full gsap-reveal"></div>
 
                 <div className="flex flex-col md:flex-row gap-12">
                   <div className="md:w-1/2 gsap-slide-left">
-                    <h3 className="text-2xl font-semibold mb-6 text-slate-700">
+                    <h3 className="text-2xl font-semibold mb-6 text-slate-100">
                       Contact Information
                     </h3>
                     <div className="space-y-6">
                       <div className="flex items-start">
-                        <div className="bg-blue-100 p-3 rounded-lg mr-4">
+                        <div className="bg-cyan-500/10 border border-cyan-400/30 p-3 rounded-xl mr-4">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6 text-blue-500"
+                            className="h-6 w-6 text-cyan-300"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -946,17 +969,17 @@
                           </svg>
                         </div>
                         <div>
-                          <h4 className="font-medium text-slate-700">Email</h4>
-                          <p className="text-slate-600">
+                          <h4 className="font-medium text-slate-200">Email</h4>
+                          <p className="text-slate-300">
                             afnan.muhmd54@gmail.com
                           </p>
                         </div>
                       </div>
                       <div className="flex items-start">
-                        <div className="bg-blue-100 p-3 rounded-lg mr-4">
+                        <div className="bg-cyan-500/10 border border-cyan-400/30 p-3 rounded-xl mr-4">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6 text-blue-500"
+                            className="h-6 w-6 text-cyan-300"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -970,15 +993,15 @@
                           </svg>
                         </div>
                         <div>
-                          <h4 className="font-medium text-slate-700">Phone</h4>
-                          <p className="text-slate-600">+92 3141858209</p>
+                          <h4 className="font-medium text-slate-200">Phone</h4>
+                          <p className="text-slate-300">+92 3141858209</p>
                         </div>
                       </div>
                       <div className="flex items-start">
-                        <div className="bg-blue-100 p-3 rounded-lg mr-4">
+                        <div className="bg-cyan-500/10 border border-cyan-400/30 p-3 rounded-xl mr-4">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6 text-blue-500"
+                            className="h-6 w-6 text-cyan-300"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -998,15 +1021,15 @@
                           </svg>
                         </div>
                         <div>
-                          <h4 className="font-medium text-slate-700">
+                          <h4 className="font-medium text-slate-200">
                             Location
                           </h4>
-                          <p className="text-slate-600">Peshawar , Pakistan</p>
+                          <p className="text-slate-300">Peshawar , Pakistan</p>
                         </div>
                       </div>
                     </div>
                     <div className="mt-8">
-                      <h4 className="font-medium text-slate-700 mb-4">
+                      <h4 className="font-medium text-slate-200 mb-4">
                         Connect with me
                       </h4>
                       <div className="flex space-x-4">
@@ -1015,12 +1038,12 @@
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label="LinkedIn"
-                          className="bg-blue-100 p-3 rounded-full hover:bg-blue-200 transition-colors"
+                          className="bg-cyan-500/10 border border-cyan-400/30 p-3 rounded-full hover:bg-cyan-500/20 transition-colors"
                         >
                           {/* LinkedIn SVG */}
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 text-blue-500"
+                            className="h-5 w-5 text-cyan-300"
                             fill="currentColor"
                             viewBox="0 0 24 24"
                           >
@@ -1030,12 +1053,12 @@
                         <a
                           href="https://github.com/23pwbcs0999-WPFALL24"
                           target="_blank"
-                          className="bg-blue-100 p-3 rounded-full hover:bg-blue-200 transition-colors"
+                          className="bg-cyan-500/10 border border-cyan-400/30 p-3 rounded-full hover:bg-cyan-500/20 transition-colors"
                         >
                           {/* GitHub SVG */}
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 text-blue-500"
+                            className="h-5 w-5 text-cyan-300"
                             fill="currentColor"
                             viewBox="0 0 24 24"
                           >
@@ -1045,12 +1068,12 @@
                         <a
                           href="#"
                           target="_blank"
-                          className="bg-blue-100 p-3 rounded-full hover:bg-blue-200 transition-colors"
+                          className="bg-cyan-500/10 border border-cyan-400/30 p-3 rounded-full hover:bg-cyan-500/20 transition-colors"
                         >
                           {/* Twitter SVG */}
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 text-blue-500"
+                            className="h-5 w-5 text-cyan-300"
                             fill="currentColor"
                             viewBox="0 0 24 24"
                           >
@@ -1062,7 +1085,7 @@
                   </div>
                   <div className="md:w-1/2 gsap-slide-right">
                     <form
-                      className="bg-white p-8 rounded-xl shadow-md space-y-6"
+                      className="bg-slate-900/80 backdrop-blur p-8 rounded-2xl border border-slate-800 shadow-xl shadow-cyan-900/40 space-y-6"
                       onSubmit={async (e) => {
                         e.preventDefault();
                         const name = e.target.name.value;
@@ -1088,24 +1111,24 @@
                         }
                       }}
                     >
-                      <h3 className="text-2xl font-semibold mb-6 text-slate-700">Send Me a Message</h3>
+                      <h3 className="text-2xl font-semibold mb-6 text-slate-100">Send Me a Message</h3>
                       <div className="mb-6">
-                        <label htmlFor="name" className="block text-slate-700 font-medium mb-2">Your Name</label>
-                        <input type="text" name="name" id="name" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="John Doe" required />
+                        <label htmlFor="name" className="block text-slate-300 font-medium mb-2">Your Name</label>
+                        <input type="text" name="name" id="name" className="w-full px-4 py-3 border border-slate-700 bg-slate-900/60 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all placeholder:text-slate-500 text-slate-200" placeholder="John Doe" required />
                       </div>
                       <div className="mb-6">
-                        <label htmlFor="email" className="block text-slate-700 font-medium mb-2">Your Email</label>
-                        <input type="email" name="email" id="email" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="john@example.com" required />
+                        <label htmlFor="email" className="block text-slate-300 font-medium mb-2">Your Email</label>
+                        <input type="email" name="email" id="email" className="w-full px-4 py-3 border border-slate-700 bg-slate-900/60 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all placeholder:text-slate-500 text-slate-200" placeholder="john@example.com" required />
                       </div>
                       <div className="mb-6">
-                        <label htmlFor="subject" className="block text-slate-700 font-medium mb-2">Subject</label>
-                        <input type="text" name="subject" id="subject" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="Project Inquiry" required />
+                        <label htmlFor="subject" className="block text-slate-300 font-medium mb-2">Subject</label>
+                        <input type="text" name="subject" id="subject" className="w-full px-4 py-3 border border-slate-700 bg-slate-900/60 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all placeholder:text-slate-500 text-slate-200" placeholder="Project Inquiry" required />
                       </div>
                       <div className="mb-6">
-                        <label htmlFor="message" className="block text-slate-700 font-medium mb-2">Message</label>
-                        <textarea name="message" id="message" rows="5" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="Your message here..." required></textarea>
+                        <label htmlFor="message" className="block text-slate-300 font-medium mb-2">Message</label>
+                        <textarea name="message" id="message" rows="5" className="w-full px-4 py-3 border border-slate-700 bg-slate-900/60 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all placeholder:text-slate-500 text-slate-200" placeholder="Your message here..." required></textarea>
                       </div>
-                      <button type="submit" className="w-full bg-blue-500 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Send Message</button>
+                      <button type="submit" className="w-full py-3 px-6 rounded-full bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 text-white font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/60 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-950">Send Message</button>
                     </form>
                   </div>
                 </div>
@@ -1113,21 +1136,21 @@
             </AnimatedSection>
 
             {/* Footer */}
-            <footer className="bg-slate-800 text-white py-8">
+            <footer className="bg-slate-950 text-slate-300 py-10 border-t border-slate-800">
               <div className="max-w-6xl mx-auto px-6 text-center">
                 <div className="flex justify-center mb-6">
-                  <span className="text-2xl font-bold text-blue-400">
+                  <span className="text-2xl font-bold text-cyan-400">
                     Portfolio
                   </span>
                 </div>
-                <p className="mb-6">
+                <p className="mb-6 text-slate-400">
                   © {year} All Rights Reserved
                 </p>
                 <div className="flex justify-center space-x-6">
                   <a
                     href="https://www.linkedin.com/in/muhammad-afnan-033273373/"
                     target="_blank"
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-slate-500 hover:text-cyan-300 transition-colors"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -1141,7 +1164,7 @@
                   <a
                     href="https://github.com/23pwbcs0999-WPFALL24"
                     target="_blank"
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-slate-500 hover:text-cyan-300 transition-colors"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -1154,7 +1177,7 @@
                   </a>
                   <a
                     href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-slate-500 hover:text-cyan-300 transition-colors"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
