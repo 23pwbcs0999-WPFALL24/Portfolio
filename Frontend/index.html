@@ -92,9 +92,40 @@
         width: 100%;
       }
 
+      /* Mobile Responsiveness */
       @media (max-width: 768px) {
         .hero-content {
           flex-direction: column;
+        }
+        
+        .tech-icon {
+          padding: 1rem;
+        }
+      }
+      
+      @media (max-width: 640px) {
+        h1 {
+          font-size: 1.875rem !important;
+        }
+        
+        h2 {
+          font-size: 1.5rem !important;
+        }
+        
+        .toast-wrap {
+          top: 0.5rem;
+          right: 0.5rem;
+          left: 0.5rem;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.5rem !important;
+        }
+        
+        .nav-link {
+          font-size: 0.875rem;
         }
       }
       
@@ -455,13 +486,13 @@
                   : "bg-slate-950/70 backdrop-blur-lg py-4"
               }`}
             >
-              <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center">
                 <div className="flex items-center">
-                  <span className="text-xl font-bold text-cyan-400">
+                  <span className="text-lg sm:text-xl font-bold text-cyan-400 truncate">
                     @afnancodes
                   </span>
                 </div>
-                <div className="hidden md:flex items-center space-x-8">
+                <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
                   {["home", "about", "skills", "projects", "contact"].map(
                     (item) => (
                       <button
@@ -487,7 +518,7 @@
                   </button>
                 </div>
                 <button
-                  className="md:hidden text-slate-100 gsap-reveal"
+                  className="md:hidden text-slate-100 gsap-reveal p-2"
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                   aria-label="Open navigation menu"
                 >
@@ -507,7 +538,7 @@
                   </svg>
                 </button>
                 {mobileMenuOpen && (
-                  <div className="md:hidden absolute top-16 right-6 bg-slate-900/95 border border-slate-800 shadow-2xl rounded-xl p-4 flex flex-col space-y-4 z-50">
+                  <div className="md:hidden absolute top-16 right-4 left-4 bg-slate-900/95 border border-slate-800 shadow-2xl rounded-xl p-4 flex flex-col space-y-4 z-50 max-h-96 overflow-y-auto">
                     {["home", "about", "skills", "projects", "contact"].map((item) => (
                       <button
                         key={item}
@@ -543,46 +574,47 @@
             {/* Hero Section */}
             <section
               id="home"
-              className="min-h-screen pt-24 flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden"
+              className="min-h-screen pt-20 sm:pt-24 flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden"
             >
-              <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 hero-content flex flex-col md:flex-row items-center">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-24 hero-content flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 mb-12 md:mb-0">
                   <span className="inline-flex items-center px-3 py-1 mb-6 text-xs font-semibold tracking-widest uppercase rounded-full bg-cyan-500/10 text-cyan-300 hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
                     Full-Stack Product Engineer
                   </span>
-                  <h1 className="text-4xl md:text-5xl font-bold leading-tight text-slate-100 mb-4 hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-slate-100 mb-4 hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
                     I design, build, and scale modern MERN experiences.
                   </h1>
-                  <h2 className="text-xl md:text-2xl font-semibold text-cyan-300 mb-6 hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
+                  <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-cyan-300 mb-6 hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
                     Partnering with startups and teams to ship resilient products faster.
                   </h2>
-                  <p className="text-lg text-slate-300 mb-10 max-w-xl hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
+                  <p className="text-base sm:text-lg text-slate-300 mb-10 max-w-xl hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
                     I craft end-to-end solutions—architecture, APIs, data layers, and front-end polish—while championing performance, accessibility, and maintainable engineering workflows.
                   </p>
-                  <div className="flex flex-wrap gap-4">
+                  <div className="flex flex-wrap gap-3 sm:gap-4">
                     <button
                       onClick={() => scrollToSection("projects")}
-                      className="px-7 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 text-white font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/60 transition-all hero-button gsap-reveal"
+                      className="px-5 sm:px-7 py-2 sm:py-3 rounded-full bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 text-white text-sm sm:text-base font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/60 transition-all hero-button gsap-reveal"
                       style={{ opacity: 0, transform: "translateY(30px)" }}
                     >
                       Explore Recent Work
                     </button>
                     <button
                       onClick={() => scrollToSection("contact")}
-                      className="px-7 py-3 rounded-full border border-cyan-400 text-cyan-200 font-semibold hover:bg-cyan-500/20 transition-all hero-button gsap-reveal"
+                      className="px-5 sm:px-7 py-2 sm:py-3 rounded-full border border-cyan-400 text-cyan-200 text-sm sm:text-base font-semibold hover:bg-cyan-500/20 transition-all hero-button gsap-reveal"
                       style={{ opacity: 0, transform: "translateY(30px)" }}
                     >
                       Start a Project
                     </button>
                   </div>
                 </div>
-                <div className="md:w-1/2 flex justify-center">
+                <div className="md:w-1/2 flex justify-center mt-8 md:mt-0">
                   <div className="relative hero-image" style={{ opacity: 0, transform: "translateY(30px)" }}>
                     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-500/40 via-sky-500/40 to-sky-500/40 blur-3xl"></div>
                     <img
                       src="images/1234-removebg-preview (2).png"
                       alt="Professional developer working on laptop with code editor visible on screen"
-                      className="relative rounded-full w-64 h-64 md:w-80 md:h-80 object-cover border-4 border-slate-900 shadow-[0_20px_45px_-15px_rgba(99,102,241,0.6)] animate-[float_6s_ease-in-out_infinite]"
+                      className="relative rounded-full w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 object-cover border-4 border-slate-900 shadow-[0_20px_45px_-15px_rgba(99,102,241,0.6)] animate-[float_6s_ease-in-out_infinite]"
+                      loading="lazy"
                     />
                   </div>
                 </div>
@@ -590,31 +622,31 @@
             </section>
 
             {/* About Section */}
-            <AnimatedSection id="about" className="py-20 bg-slate-900">
-              <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">
+            <AnimatedSection id="about" className="py-12 sm:py-16 md:py-20 bg-slate-900">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6">
+                <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">
                   About Me
                 </h2>
                 <div className="w-28 h-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 mx-auto mb-12 rounded-full gsap-reveal"></div>
 
-                <div className="flex flex-col md:flex-row gap-12">
+                <div className="flex flex-col md:flex-row gap-8 md:gap-12">
                   {/* Left Section */}
                   <div className="md:w-1/2 gsap-slide-left">
-                    <h3 className="text-2xl font-semibold mb-4 text-slate-100">
+                    <h3 className="text-xl sm:text-2xl font-semibold mb-4 text-slate-100">
                       Who I Am
                     </h3>
-                    <p className="text-slate-300 mb-6">
+                    <p className="text-sm sm:text-base text-slate-300 mb-6">
                       I'm a Computer Science student and passionate MERN stack
                       developer who loves building full-stack web applications.
                       I enjoy turning ideas into real-world projects using clean
                       and efficient code.
                     </p>
-                    <p className="text-slate-300 mb-6">
+                    <p className="text-sm sm:text-base text-slate-300 mb-6">
                       I specialize in creating responsive, user-friendly
                       interfaces with React and developing scalable backend
                       systems using Node.js, Express, and MongoDB.
                     </p>
-                    <p className="text-slate-300">
+                    <p className="text-sm sm:text-base text-slate-300">
                       Currently, I’m expanding my skills by learning Machine
                       Learning and exploring how to integrate it into modern web
                       apps.
@@ -623,7 +655,7 @@
 
                   {/* Right Section (Stats or Achievements) */}
                   <div className="md:w-1/2 flex items-center justify-center gsap-slide-right">
-                    <div className="flex flex-wrap gap-6">
+                    <div className="flex flex-wrap gap-4 sm:gap-6 w-full justify-center">
                       <div className="bg-slate-800/80 backdrop-blur p-6 rounded-2xl text-center shadow-lg shadow-cyan-900/40 border border-slate-700 gsap-scale">
                         <h4 className="text-2xl font-bold text-cyan-300">
                           10+
@@ -641,21 +673,21 @@
             </AnimatedSection>
 
             {/* Skills Section */}
-            <AnimatedSection id="skills" className="py-20 bg-slate-950">
-              <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">
+            <AnimatedSection id="skills" className="py-12 sm:py-16 md:py-20 bg-slate-950">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6">
+                <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">
                   My Skills
                 </h2>
                 <div className="w-28 h-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 mx-auto mb-12 rounded-full gsap-reveal"></div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
                   {skills.map((skill, index) => (
                     <div
                       key={index}
-                      className="tech-icon bg-slate-900/70 backdrop-blur p-6 rounded-xl shadow-lg shadow-cyan-900/40 border border-slate-800 text-center hover:shadow-cyan-500/40 cursor-default gsap-scale"
+                      className="tech-icon bg-slate-900/70 backdrop-blur p-4 sm:p-6 rounded-xl shadow-lg shadow-cyan-900/40 border border-slate-800 text-center hover:shadow-cyan-500/40 cursor-default gsap-scale"
                     >
-                      <div className="text-4xl mb-3">{skill.icon}</div>
-                      <h3 className="font-medium text-slate-200">
+                      <div className="text-3xl sm:text-4xl mb-2 sm:mb-3">{skill.icon}</div>
+                      <h3 className="font-medium text-xs sm:text-sm md:text-base text-slate-200">
                         {skill.name}
                       </h3>
                     </div>
@@ -663,11 +695,11 @@
                 </div>
 
                 <div className="mt-16">
-                  <h3 className="text-2xl font-semibold text-center mb-8 text-slate-100 gsap-reveal">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-center mb-8 text-slate-100 gsap-reveal">
                     Tech Stack Highlights
                   </h3>
-                  <div className="bg-slate-900/80 backdrop-blur rounded-2xl border border-slate-800 shadow-xl shadow-cyan-900/40 p-6 md:p-8 gsap-fade">
-                    <div className="flex flex-col md:flex-row gap-8">
+                  <div className="bg-slate-900/80 backdrop-blur rounded-2xl border border-slate-800 shadow-xl shadow-cyan-900/40 p-4 sm:p-6 md:p-8 gsap-fade">
+                    <div className="flex flex-col md:flex-row gap-6 md:gap-8">
                       <div className="md:w-1/3">
                         <h4 className="font-bold text-lg text-cyan-300 mb-3">
                           Frontend
@@ -851,42 +883,43 @@
             </AnimatedSection>
 
             {/* Projects Section */}
-            <AnimatedSection id="projects" className="py-20 bg-slate-900">
-              <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">
+            <AnimatedSection id="projects" className="py-12 sm:py-16 md:py-20 bg-slate-900">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6">
+                <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">
                   My Projects
                 </h2>
                 <div className="w-28 h-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 mx-auto mb-12 rounded-full gsap-reveal"></div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                   {projects.map((project, index) => (
                     <div
                       key={project.id}
-                      className="project-card bg-slate-900/70 backdrop-blur rounded-2xl overflow-hidden shadow-xl shadow-cyan-900/40 border border-slate-800 gsap-fade"
+                      className="project-card bg-slate-900/70 backdrop-blur rounded-2xl overflow-hidden shadow-xl shadow-cyan-900/40 border border-slate-800 gsap-fade h-full flex flex-col"
                       style={{ transitionDelay: `${index * 0.1}s` }}
                     >
-                      <div className="card-inner">
+                      <div className="card-inner flex-1 flex flex-col">
                         <img
                           src={project.image}
                           alt={project.alt}
-                          className="w-full h-48 object-cover"
+                          className="w-full h-40 sm:h-48 object-cover"
+                          loading="lazy"
                           onError={(e) => {
                             e.target.onerror = null;
                             e.target.src = "https://placehold.co/600x400";
                           }}
                         />
-                        <div className="p-6">
-                          <h3 className="text-xl font-bold mb-2 text-slate-100">
+                        <div className="p-4 sm:p-6 flex flex-col flex-1">
+                          <h3 className="text-lg sm:text-xl font-bold mb-2 text-slate-100">
                             {project.title}
                           </h3>
-                          <p className="text-slate-300 mb-4">
+                          <p className="text-sm sm:text-base text-slate-300 mb-4 flex-1">
                             {project.description}
                           </p>
-                          <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-2 mb-4">
                             {project.tags.map((tag, index) => (
                               <span
                                 key={index}
-                                className="text-xs bg-cyan-500/10 text-cyan-300 px-3 py-1 rounded-full border border-cyan-400/30"
+                                className="text-xs bg-cyan-500/10 text-cyan-300 px-2 sm:px-3 py-1 rounded-full border border-cyan-400/30"
                               >
                                 {tag}
                               </span>
@@ -918,16 +951,16 @@
             </AnimatedSection>
 
             {/* Contact Section */}
-            <AnimatedSection id="contact" className="py-20 bg-slate-950">
-              <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">
+            <AnimatedSection id="contact" className="py-12 sm:py-16 md:py-20 bg-slate-950">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6">
+                <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">
                   Get In Touch
                 </h2>
                 <div className="w-28 h-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 mx-auto mb-12 rounded-full gsap-reveal"></div>
 
-                <div className="flex flex-col md:flex-row gap-12">
+                <div className="flex flex-col md:flex-row gap-8 md:gap-12">
                   <div className="md:w-1/2 gsap-slide-left">
-                    <h3 className="text-2xl font-semibold mb-6 text-slate-100">
+                    <h3 className="text-xl sm:text-2xl font-semibold mb-6 text-slate-100">
                       Contact Information
                     </h3>
                     <div className="space-y-6">
@@ -1065,7 +1098,7 @@
                   </div>
                   <div className="md:w-1/2 gsap-slide-right">
                     <form
-                      className="bg-slate-900/80 backdrop-blur p-8 rounded-2xl border border-slate-800 shadow-xl shadow-cyan-900/40 space-y-6"
+                      className="bg-slate-900/80 backdrop-blur p-4 sm:p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl shadow-cyan-900/40 space-y-4 sm:space-y-6"
                       onSubmit={async (e) => {
                         e.preventDefault();
                         setIsSubmitting(true);
@@ -1106,24 +1139,24 @@
                         }
                       }}
                     >
-                      <h3 className="text-2xl font-semibold mb-6 text-slate-100">Send Me a Message</h3>
-                      <div className="mb-6">
-                        <label htmlFor="name" className="block text-slate-300 font-medium mb-2">Your Name</label>
-                        <input type="text" name="name" id="name" className="w-full px-4 py-3 border border-slate-700 bg-slate-900/60 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all placeholder:text-slate-500 text-slate-200" placeholder="John Doe" required />
+                      <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-slate-100">Send Me a Message</h3>
+                      <div className="mb-4 sm:mb-6">
+                        <label htmlFor="name" className="block text-slate-300 text-sm font-medium mb-2">Your Name</label>
+                        <input type="text" name="name" id="name" className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-slate-700 bg-slate-900/60 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all placeholder:text-slate-500 text-slate-200" placeholder="John Doe" required />
                       </div>
-                      <div className="mb-6">
-                        <label htmlFor="email" className="block text-slate-300 font-medium mb-2">Your Email</label>
-                        <input type="email" name="email" id="email" className="w-full px-4 py-3 border border-slate-700 bg-slate-900/60 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all placeholder:text-slate-500 text-slate-200" placeholder="john@example.com" required />
+                      <div className="mb-4 sm:mb-6">
+                        <label htmlFor="email" className="block text-slate-300 text-sm font-medium mb-2">Your Email</label>
+                        <input type="email" name="email" id="email" className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-slate-700 bg-slate-900/60 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all placeholder:text-slate-500 text-slate-200" placeholder="john@example.com" required />
                       </div>
-                      <div className="mb-6">
-                        <label htmlFor="subject" className="block text-slate-300 font-medium mb-2">Subject</label>
-                        <input type="text" name="subject" id="subject" className="w-full px-4 py-3 border border-slate-700 bg-slate-900/60 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all placeholder:text-slate-500 text-slate-200" placeholder="Project Inquiry" required />
+                      <div className="mb-4 sm:mb-6">
+                        <label htmlFor="subject" className="block text-slate-300 text-sm font-medium mb-2">Subject</label>
+                        <input type="text" name="subject" id="subject" className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-slate-700 bg-slate-900/60 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all placeholder:text-slate-500 text-slate-200" placeholder="Project Inquiry" required />
                       </div>
-                      <div className="mb-6">
-                        <label htmlFor="message" className="block text-slate-300 font-medium mb-2">Message</label>
-                        <textarea name="message" id="message" rows="5" className="w-full px-4 py-3 border border-slate-700 bg-slate-900/60 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all placeholder:text-slate-500 text-slate-200" placeholder="Your message here..." required></textarea>
+                      <div className="mb-4 sm:mb-6">
+                        <label htmlFor="message" className="block text-slate-300 text-sm font-medium mb-2">Message</label>
+                        <textarea name="message" id="message" rows="4" className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-slate-700 bg-slate-900/60 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all placeholder:text-slate-500 text-slate-200 resize-none" placeholder="Your message here..." required></textarea>
                       </div>
-                      <button type="submit" disabled={isSubmitting} className="w-full py-3 px-6 rounded-full bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 text-white font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/60 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-950 disabled:opacity-70 disabled:cursor-not-allowed">{isSubmitting ? "Sending..." : "Send Message"}</button>
+                      <button type="submit" disabled={isSubmitting} className="w-full py-2 sm:py-3 px-4 sm:px-6 rounded-full bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 text-white text-sm sm:text-base font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/60 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-950 disabled:opacity-70 disabled:cursor-not-allowed">{isSubmitting ? "Sending..." : "Send Message"}</button>
                     </form>
                   </div>
                 </div>
@@ -1131,17 +1164,17 @@
             </AnimatedSection>
 
             {/* Footer */}
-            <footer className="bg-slate-950 text-slate-300 py-10 border-t border-slate-800">
-              <div className="max-w-6xl mx-auto px-6 text-center">
-                <div className="flex justify-center mb-6">
-                  <span className="text-2xl font-bold text-cyan-400">
+            <footer className="bg-slate-950 text-slate-300 py-8 sm:py-10 border-t border-slate-800">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+                <div className="flex justify-center mb-4 sm:mb-6">
+                  <span className="text-xl sm:text-2xl font-bold text-cyan-400">
                     Portfolio
                   </span>
                 </div>
-                <p className="mb-6 text-slate-400">
+                <p className="mb-4 sm:mb-6 text-slate-400 text-sm sm:text-base">
                   © {year} All Rights Reserved
                 </p>
-                <div className="flex justify-center space-x-6">
+                <div className="flex justify-center space-x-4 sm:space-x-6">
                   <a
                     href="https://www.linkedin.com/in/muhammad-afnan-033273373/"
                     target="_blank"
