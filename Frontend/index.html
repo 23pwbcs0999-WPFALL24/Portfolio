@@ -3,15 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Afnan</title>
-    <link rel="icon" type="image/png" href="images/Black_and_White_Simple_Modern_Letter_G_Monogram_Logo-removebg-preview.png" />
+    <title>Muhammad Afnan | AI/ML &amp; Full-Stack Engineer</title>
+    <meta name="description" content="Muhammad Afnan is an AI/ML &amp; Full-Stack Engineer building practical products across artificial intelligence, computer vision, IoT, and modern web engineering." />
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Remove this if not using Animate.css classes -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> -->
-    <!-- Add GSAP library -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
@@ -213,154 +210,35 @@
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 }
 
-      const projects = [
-        {
-          id: 11,
-          title: "TraceMind",
-          description:
-            "An AI-powered incident intelligence platform that analyzes large-scale system traces, detects anomalies, measures drift, and explains the signals behind each decision. It includes experiment history, uncertainty scoring, live performance metrics, and evidence-based investigation support.",
-          tags: ["TypeScript", "Python", "FastAPI", "Machine Learning", "Cloudflare D1", "Docker"],
-          image: "images/traceming_img.png",
-          alt: "TraceMind project placeholder",
-          liveLink: "#",
-          sourceCode: "#",
-        },
-        {
-          id: 10,
-          title: "TraffiSense",
-          description:
-            "An AI road-safety prototype that analyzes intersection videos to track road users and detect near-miss events using TTC and PET indicators. It generates risk heatmaps, confidence scores, evidence videos, and intervention recommendations.",
-          tags: ["Python", "Computer Vision", "Trajectory Analysis", "Camera Calibration", "TTC/PET Analytics"],
-          image: "images/traffisense.png",
-          alt: "TraffiSense project placeholder",
-          liveLink: "#",
-          sourceCode: "#",
-        },
-        {
-          id: 9,
-          title: "ClinicQ",
-          description:
-            "A multi-tenant clinic queue and appointment management platform with dedicated portals for administrators, clinic owners, receptionists, and doctors. It supports live queues, appointments, walk-ins, emergency handling, patient alerts, reports, and audit logs.",
-          tags: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Socket.IO", "Tailwind CSS", "JWT"],
-          image: "images/clinicq_img.png",
-          alt: "ClinicQ project placeholder",
-          liveLink: "#",
-          sourceCode: "#",
-        },
-        {
-          id: 8,
-          title: "IoT Flood Detection System",
-          description:
-            "A real-time flood monitoring and early-warning system that collects water level, flow, and environmental data through ESP32 sensor nodes. It provides map-based monitoring, trend charts, edge-level risk detection, and live alerts.",
-          tags: ["ESP32", "MQTT", "React", "Node.js", "Express", "MongoDB", "Leaflet", "Recharts"],
-          image: "images/iot_flood.png",
-          alt: "IoT Flood Detection System project placeholder",
-          liveLink: "#",
-          sourceCode: "#",
-        },
-        {
-          id: 7,
-          title: "Aurelia Jewels",
-          description:
-            "A luxury jewellery e-commerce platform with a public storefront and protected admin dashboard. Visitors can browse products, manage cart and checkout flows, request custom jewellery with image uploads, contact the business, and subscribe to newsletters, while admins manage products, orders, and dashboard insights.",
-          tags: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "JWT"],
-          image: "images/jewlery.png",
-          alt: "Aurelia Jewels Website",
-          liveLink: "https://opulentcrown.vercel.app/",
-          sourceCode: "#",
-        },
-        {
-          id: 6,
-          title: "Mobeen Real Estate Website",
-          description:
-            "A full-stack MERN real estate marketplace where agents and users can list properties with JWT authentication, property search/filters, media management with Cloudinary, and inquiry contact system. Features property details, agent directory, and user dashboard for property management.",
-          tags: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS", "Cloudinary"],
-          image: "images/mobeen.png",
-          alt: "Mobeen Real Estate Website",
-          liveLink: "https://mobeenrealestate.vercel.app/", 
-          sourceCode: "#", 
-        },
-        {
-          id: 5,
-          title: "AI Study Buddy",
-          description:
-            "A full-stack collaboration suite designed to enhance student study sessions by addressing fragmentation in current study methods. Features include collaborative study rooms with real-time code editing (Yjs/CodeMirror), AI-powered automatic note summarization and tagging (Cohere integration), secure multi-runtime code runner (Node, Python, Ruby, PHP) with sandboxed execution, JWT authentication, chat functionality, focus session timers, and comprehensive note lifecycle management (soft-delete, restore, favorites, stats). Built with React/Vite frontend, Node/Express backend, MongoDB persistence, and WebSocket real-time collaboration. Deployment coming soon.",
-          tags: ["React", "Node.js", "MongoDB", "Express", "Yjs", "WebSocket", "Cohere AI"],
-          image: "images/aii.png", 
-          alt: "AI Study Buddy Screenshot",
-          liveLink: "#", 
-          sourceCode: "https://github.com/23pwbcs0999-WPFALL24/AI-Study-Buddy", 
-        },
-        {
-          id: 3,
-          title: "Hostel Management System",
-          description:
-            "Hostel management system built with React and Node.js to efficiently manage rooms, students, allocations, inventory, and visitor records through a user-friendly interface.",
-          tags: ["React", "Express", "Node.js", "MongoDB"],
-          image: "images/hostel1.png",
-          alt: "img",
-          liveLink: "https://uet-hostels-mng.vercel.app/", 
-          sourceCode: "https://github.com/23pwbcs0999-WPFALL24/HOSTEL-MANAGEMENT-SYSTEM", 
-        },
-        {
-          id: 1,
-          title: "RAC Community Website",
-          description:
-            "Community platform built with the MERN stack, featuring robotics project showcases, event updates, and interactive community engagement",
-          tags: ["React", "Node.js", "MongoDB", "Express"],
-          image: "images/RAC.png",
-          alt: "img",
-          liveLink: "https://racproject.vercel.app/",
-          sourceCode: "https://github.com/23pwbcs0999-WPFALL24/RAC-Project",
-        },
-        {
-          id: 4,
-          title: "QuickPoll",
-          description:
-            "A secure and user-friendly polling app with token-based voting, IP restriction options, and real-time result tracking, built using the MERN stack.",
-          tags: ["React", "Node.js", "MongoDB", "Express"],
-          image: "images/quickpoll.png",
-          alt: "QuickPoll Screenshot",
-          liveLink: "https://myquickpoll.vercel.app/", 
-          sourceCode: "https://github.com/23pwbcs0999-WPFALL24/quickpoll", 
-        },
+      const featuredProjects = [
+        { id: 11, title: "TraceMind", subtitle: "Evidence-Based AI Incident Investigator", year: "2026", description: "An evidence-based AI incident investigation platform that analyzes system telemetry, detects anomalies, ranks likely microservice root causes, and explains its conclusions using trace and signal-level evidence.", tags: ["Next.js", "TypeScript", "FastAPI", "Python", "scikit-learn", "OpenTelemetry"], image: "images/traceming_img.png", alt: "TraceMind project preview", result: "Development test: adaptive weighting reached 100% F1 versus 91% fixed weighting on a 12-scenario benchmark.", sourceCode: "#" },
+        { id: 9, title: "ClinicQ", subtitle: "Multi-Tenant Clinic Queue SaaS", year: "2026", description: "A multi-tenant clinic queue and appointment platform designed to reduce waiting-time uncertainty through role-based workflows, live queue management, doctor availability updates, and patient alerts.", tags: ["TypeScript", "React", "Vite", "Node.js", "Express", "MongoDB", "Mongoose", "JWT"], image: "images/clinicq_img.png", alt: "ClinicQ project preview", sourceCode: "#" },
+        { id: 10, title: "Nigran", subtitle: "AI Road-Safety Digital Twin Prototype", year: "2026", description: "A computer-vision road-safety prototype that transforms intersection video into calibrated trajectories and analyzes traffic conflicts and near-miss events using safety indicators such as TTC and PET.", tags: ["Computer Vision", "Python", "Trajectory Analytics", "Camera Calibration"], image: "images/traffisense.png", alt: "Nigran project preview", sourceCode: "#" },
+        { id: 8, title: "UAV Package Drift Prediction", subtitle: "Machine Learning Simulation", year: "2025", description: "A machine-learning system for predicting UAV package drift during low-altitude supply drops using simulated records and evaluated regression models.", tags: ["Python", "Pandas", "NumPy", "scikit-learn", "Matplotlib", "Streamlit"], image: null, alt: "UAV package drift technical placeholder", result: "Random Forest: R² = 0.990 on noise-augmented testing and R² = 0.9978 on clean simulated data.", sourceCode: "#" },
+        { id: 7, title: "IoT Flood Detection & Early Warning System", subtitle: "Real-Time IoT Monitoring", year: "2026", description: "An end-to-end IoT flood monitoring platform that collects water-level data from ESP32 sensor nodes, processes readings through MQTT, stores historical measurements, visualizes geographic risk, tracks trends, and triggers early-warning states.", tags: ["ESP32", "MQTT", "Node.js", "Express", "MongoDB", "React", "Leaflet"], image: "images/iot_flood.png", alt: "IoT flood detection project preview", sourceCode: "#" },
+        { id: 6, title: "RAAD Electronic Digital Stethoscope", subtitle: "Biomedical Signal Processing Prototype", year: "2024 - 2025", description: "A biomedical sensing prototype developed for heart and lung sound acquisition, combining microphone amplification, analog/digital signal conditioning, filtering, noise reduction, and embedded hardware integration.", tags: ["Embedded Systems", "MAX9814", "Analog Filters", "Audio / Signal Processing"], image: null, alt: "RAAD electronic digital stethoscope technical placeholder", result: "Heart-sound filtering target: 20-200 Hz. Rechargeable 3.7 V power design.", sourceCode: "#" },
       ];
-      
-      const skills = [
-        { name: "React", icon: "⚛️" },
-        { name: "Node.js", icon: "🟢" },
-        { name: "Express", icon: "🚀" },
-        { name: "MongoDB", icon: "🍃" },
-        { name: "JavaScript", icon: "📜" },
-        { name: "HTML5", icon: "🖥️" },
-        { name: "CSS3", icon: "🎨" },
-        { name: "Tailwind CSS", icon: "💨" },
-        { name: "Git", icon: "🔄" },
-        { name: "REST API", icon: "🌐" },
+
+      const moreProjects = [
+        { id: 5, title: "AI Study Buddy", year: "2025", description: "A collaborative study suite with real-time code editing, AI note summarization and tagging, secure code execution, JWT authentication, chat, and focus timers.", tags: ["React/Vite", "Node.js", "MongoDB", "WebSockets", "Yjs", "CodeMirror", "Cohere"], image: "images/aii.png", liveLink: "#", sourceCode: "https://github.com/23pwbcs0999-WPFALL24/AI-Study-Buddy" },
+        { id: 4, title: "Mobeen Real Estate Platform", year: "2026", description: "A full-stack property platform with authentication, search and filtering, Cloudinary media management, inquiries, agent directory, and user dashboard.", tags: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "Cloudinary"], image: "images/mobeen.png", liveLink: "https://mobeenrealestate.vercel.app/", sourceCode: "#" },
+        { id: 3, title: "QuickPoll", year: "2025", description: "A secure real-time polling platform with token-based voting, optional IP restrictions, live results, and shareable polls.", tags: ["React", "Node.js", "Express", "MongoDB", "Socket.IO"], image: "images/quickpoll.png", liveLink: "https://myquickpoll.vercel.app/", sourceCode: "https://github.com/23pwbcs0999-WPFALL24/quickpoll" },
+        { id: 2, title: "Hostel Management System", year: "2025", description: "A hostel management application covering rooms, students, allocations, inventory, and visitor records with a structured relational backend and responsive management interface.", tags: ["React", "Node.js", "Express", "MySQL", "Sequelize"], image: "images/hostel1.png", liveLink: "https://uet-hostels-mng.vercel.app/", sourceCode: "https://github.com/23pwbcs0999-WPFALL24/HOSTEL-MANAGEMENT-SYSTEM" },
+        { id: 1, title: "RAC Robotics Community Website", year: "2025", description: "A robotics community platform for project showcases, events, updates, and member engagement.", tags: ["React/Vite", "Node.js", "Express", "MongoDB"], image: "images/RAC.png", liveLink: "https://racproject.vercel.app/", sourceCode: "https://github.com/23pwbcs0999-WPFALL24/RAC-Project" },
+        { id: 0, title: "Peshori Systems Corporate Website", year: "2026", description: "A modern company website presenting services, products, founders, and calls to action with responsive layouts and motion-led interactions.", tags: ["React", "Responsive UI", "Motion Design"], image: "images/Screenshot 2026-09-10 225223.png", liveLink: "#", sourceCode: "#" },
+      ];
+
+      const skillGroups = [
+        { name: "AI / Machine Learning", icon: "◎", skills: ["Python", "Pandas", "NumPy", "scikit-learn", "Regression", "Random Forest", "Feature Engineering", "Model Evaluation", "Cross-Validation", "Computer Vision", "NLP Fundamentals", "Deep Learning Fundamentals", "Matplotlib"] },
+        { name: "Full-Stack Engineering", icon: "<>" , skills: ["React", "Next.js", "TypeScript", "JavaScript", "Node.js", "Express.js", "REST APIs", "Socket.IO", "WebSockets", "JWT", "bcrypt", "Yjs"] },
+        { name: "Databases & Cloud", icon: "▦", skills: ["MongoDB", "Mongoose", "MySQL", "Sequelize", "Firebase Authentication", "Firestore", "Vercel", "Render", "Railway", "Cloudinary"] },
+        { name: "IoT & Embedded", icon: "⌁", skills: ["ESP32", "Arduino", "MQTT", "Sensors", "Edge Rules", "Embedded Systems"] },
+        { name: "Tools", icon: "⌘", skills: ["Git", "GitHub", "Postman", "VS Code", "Linux", "Streamlit", "Leaflet"] },
       ];
 
       const experience = [
-        {
-          role: "Senior MERN Developer",
-          company: "Tech Innovators",
-          period: "2021 - Present",
-          description:
-            "Leading a team to develop full-stack applications with React, Node.js, and MongoDB.",
-        },
-        {
-          role: "Full Stack Developer",
-          company: "Digital Solutions",
-          period: "2019 - 2021",
-          description:
-            "Developed and maintained web applications using the MERN stack.",
-        },
-        {
-          role: "Frontend Developer",
-          company: "Web Crafters",
-          period: "2017 - 2019",
-          description:
-            "Built responsive user interfaces with React and modern CSS.",
-        },
+        { role: "Co-Founder & Full-Stack/AI Developer", company: "Peshori Systems", period: "2026 - Present", description: "Co-founded a software venture focused on building practical software, AI, and IoT products. Lead architecture, full-stack development, product design, technical demonstrations, branding, and early client outreach." },
+        { role: "Freelance Web Developer", company: "Remote / Peshawar", period: "2024 - 2026", description: "Built and delivered responsive websites and MERN applications, covering user interfaces, REST APIs, authentication, databases, media handling, deployment, and iterative client revisions." },
       ];
       
       // Animated Section Component
@@ -486,7 +364,7 @@
           const handleScroll = () => {
             setScrolled(window.scrollY > 50);
             // Update active section based on scroll position
-            const sections = ["home", "about", "skills", "projects", "contact"];
+            const sections = ["home", "about", "experience", "skills", "projects", "leadership", "education", "contact"];
             sections.forEach((section) => {
               const element = document.getElementById(section);
               if (element) {
@@ -548,7 +426,7 @@
                   </span>
                 </div>
                 <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-                  {["home", "about", "skills", "projects", "contact"].map(
+                  {["home", "about", "experience", "skills", "projects", "leadership", "contact"].map(
                     (item) => (
                       <button
                         key={item}
@@ -569,7 +447,7 @@
                     onClick={() => scrollToSection("contact")}
                     className="px-4 py-2 rounded-full border border-cyan-400 text-cyan-300 text-sm font-semibold hover:bg-cyan-500/20 transition-all"
                   >
-                    Book a Call
+                    Start a Conversation
                   </button>
                 </div>
                 <button
@@ -594,7 +472,7 @@
                 </button>
                 {mobileMenuOpen && (
                   <div className="md:hidden absolute top-16 right-4 left-4 bg-slate-900/95 border border-slate-800 shadow-2xl rounded-xl p-4 flex flex-col space-y-4 z-50 max-h-96 overflow-y-auto">
-                    {["home", "about", "skills", "projects", "contact"].map((item) => (
+                    {["home", "about", "experience", "skills", "projects", "leadership", "contact"].map((item) => (
                       <button
                         key={item}
                         onClick={() => {
@@ -618,7 +496,7 @@
                         }}
                         className="w-full px-4 py-2 rounded-full border border-cyan-400 text-cyan-300 text-sm font-semibold hover:bg-cyan-500/20 transition-all"
                       >
-                        Book a Call
+                        Start a Conversation
                       </button>
                     </div>
                   </div>
@@ -634,16 +512,16 @@
               <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-24 hero-content flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 mb-12 md:mb-0">
                   <span className="inline-flex items-center px-3 py-1 mb-6 text-xs font-semibold tracking-widest uppercase rounded-full bg-cyan-500/10 text-cyan-300 hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
-                    Full-Stack Product Engineer
+                    AI/ML &amp; Full-Stack Engineer
                   </span>
                   <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-slate-100 mb-4 hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
-                    I design, build, and scale modern MERN experiences.
+                    I build intelligent products that solve real-world problems.
                   </h1>
                   <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-cyan-300 mb-6 hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
-                    Partnering with startups and teams to ship resilient products faster.
+                    BS Computer Science | AI/ML | Full-Stack | Computer Vision | IoT
                   </h2>
                   <p className="text-base sm:text-lg text-slate-300 mb-10 max-w-xl hero-text gsap-reveal" style={{ opacity: 0, transform: "translateY(30px)" }}>
-                    I craft end-to-end solutions—architecture, APIs, data layers, and front-end polish—while championing performance, accessibility, and maintainable engineering workflows.
+                    I combine AI/ML, computer vision, full-stack engineering, and IoT to turn complex ideas into practical, scalable products. From AI-powered systems and computer-vision prototypes to SaaS platforms and sensor-based solutions, I design and build products across the full technology stack.
                   </p>
                   <div className="flex flex-wrap gap-3 sm:gap-4">
                     <button
@@ -651,14 +529,14 @@
                       className="px-5 sm:px-7 py-2 sm:py-3 rounded-full bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 text-white text-sm sm:text-base font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/60 transition-all hero-button gsap-reveal"
                       style={{ opacity: 0, transform: "translateY(30px)" }}
                     >
-                      Explore Recent Work
+                      View My Work
                     </button>
                     <button
                       onClick={() => scrollToSection("contact")}
                       className="px-5 sm:px-7 py-2 sm:py-3 rounded-full border border-cyan-400 text-cyan-200 text-sm sm:text-base font-semibold hover:bg-cyan-500/20 transition-all hero-button gsap-reveal"
                       style={{ opacity: 0, transform: "translateY(30px)" }}
                     >
-                      Start a Project
+                      Let’s Build Something
                     </button>
                   </div>
                 </div>
@@ -680,7 +558,7 @@
             <AnimatedSection id="about" className="py-12 sm:py-16 md:py-20 bg-slate-900">
               <div className="max-w-6xl mx-auto px-4 sm:px-6">
                 <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">
-                  About Me
+                  Who I Am
                 </h2>
                 <div className="w-28 h-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 mx-auto mb-12 rounded-full gsap-reveal"></div>
 
@@ -688,38 +566,38 @@
                   {/* Left Section */}
                   <div className="md:w-1/2 gsap-slide-left">
                     <h3 className="text-xl sm:text-2xl font-semibold mb-4 text-slate-100">
-                      Who I Am
+                      AI/ML &amp; Full-Stack Engineer
                     </h3>
                     <p className="text-sm sm:text-base text-slate-300 mb-6">
-                      I'm a Computer Science student and passionate MERN stack
-                      developer who loves building full-stack web applications.
-                      I enjoy turning ideas into real-world projects using clean
-                      and efficient code.
+                      I'm a Computer Science student at UET Peshawar and an AI/ML &amp; Full-Stack Engineer focused on building practical technology for real-world problems.
                     </p>
                     <p className="text-sm sm:text-base text-slate-300 mb-6">
-                      I specialize in creating responsive, user-friendly
-                      interfaces with React and developing scalable backend
-                      systems using Node.js, Express, and MongoDB.
+                      My work spans machine learning, computer vision, full-stack web development, IoT, real-time systems, and intelligent product development. I've built applications ranging from SaaS platforms and collaborative tools to AI-driven analytics and sensor-based monitoring systems.
                     </p>
                     <p className="text-sm sm:text-base text-slate-300">
-                      Currently, I’m expanding my skills by learning Machine
-                      Learning and exploring how to integrate it into modern web
-                      apps.
+                      I enjoy taking an idea from problem definition to a working product - designing the architecture, building the software and AI components, integrating hardware when needed, and turning prototypes into usable experiences.
+                    </p>
+                    <p className="text-sm sm:text-base text-slate-300">
+                      I'm currently co-founding Peshori Systems, where I'm working on software products, AI/IoT prototypes, and solutions for real business problems.
                     </p>
                   </div>
 
-                  {/* Right Section (Stats or Achievements) */}
+                  {/* Right Section (Focus Areas) */}
                   <div className="md:w-1/2 flex items-center justify-center gsap-slide-right">
                     <div className="flex flex-wrap gap-4 sm:gap-6 w-full justify-center">
                       <div className="bg-slate-800/80 backdrop-blur p-6 rounded-2xl text-center shadow-lg shadow-cyan-900/40 border border-slate-700 gsap-scale">
                         <h4 className="text-2xl font-bold text-cyan-300">
-                          10+
+                          13+
                         </h4>
-                        <p className="text-slate-300">Projects Delivered</p>
+                        <p className="text-slate-300">Applied Projects</p>
                       </div>
                       <div className="bg-slate-800/80 backdrop-blur p-6 rounded-2xl text-center shadow-lg shadow-cyan-900/40 border border-slate-700 gsap-scale">
-                        <h4 className="text-2xl font-bold text-cyan-300">8+</h4>
-                        <p className="text-slate-300">Technologies Mastered</p>
+                        <h4 className="text-2xl font-bold text-cyan-300">AI / ML</h4>
+                        <p className="text-slate-300">Intelligent Systems</p>
+                      </div>
+                      <div className="bg-slate-800/80 backdrop-blur p-6 rounded-2xl text-center shadow-lg shadow-cyan-900/40 border border-slate-700 gsap-scale">
+                        <h4 className="text-2xl font-bold text-cyan-300">Full-Stack</h4>
+                        <p className="text-slate-300">Product Engineering</p>
                       </div>
                     </div>
                   </div>
@@ -735,21 +613,23 @@
                 </h2>
                 <div className="w-28 h-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 mx-auto mb-12 rounded-full gsap-reveal"></div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
-                  {skills.map((skill, index) => (
-                    <div
-                      key={index}
-                      className="tech-icon bg-slate-900/70 backdrop-blur p-4 sm:p-6 rounded-xl shadow-lg shadow-cyan-900/40 border border-slate-800 text-center hover:shadow-cyan-500/40 cursor-default gsap-scale"
-                    >
-                      <div className="text-3xl sm:text-4xl mb-2 sm:mb-3">{skill.icon}</div>
-                      <h3 className="font-medium text-xs sm:text-sm md:text-base text-slate-200">
-                        {skill.name}
-                      </h3>
+                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+                  {skillGroups.map((group) => (
+                    <div key={group.name} className="bg-slate-900/70 backdrop-blur p-5 sm:p-6 rounded-2xl border border-slate-800 shadow-lg shadow-cyan-950/30 gsap-scale">
+                      <div className="flex items-center gap-3 mb-5">
+                        <span className="text-2xl text-cyan-300 font-mono">{group.icon}</span>
+                        <h3 className="text-lg font-semibold text-slate-100">{group.name}</h3>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {group.skills.map((skill) => (
+                          <span key={skill} className="text-xs sm:text-sm bg-cyan-500/10 text-cyan-200 px-3 py-1.5 rounded-lg border border-cyan-400/20">{skill}</span>
+                        ))}
+                      </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-16">
+                <div className="hidden">
                   <h3 className="text-xl sm:text-2xl font-semibold text-center mb-8 text-slate-100 gsap-reveal">
                     Tech Stack Highlights
                   </h3>
@@ -851,7 +731,7 @@
                                 />
                               </svg>
                             </span>
-                            REST & GraphQL APIs
+                            REST APIs & WebSockets
                           </li>
                           <li className="flex items-center">
                             <span className="bg-sky-500/10 text-sky-300 rounded-full p-1 mr-2">
@@ -910,7 +790,7 @@
                                 />
                               </svg>
                             </span>
-                            PostgreSQL
+                            Firestore
                           </li>
                           <li className="flex items-center">
                             <span className="bg-sky-500/10 text-sky-300 rounded-full p-1 mr-2">
@@ -937,39 +817,65 @@
               </div>
             </AnimatedSection>
 
+            <AnimatedSection id="experience" className="py-12 sm:py-16 md:py-20 bg-slate-900">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6">
+                <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">Experience</h2>
+                <div className="w-28 h-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 mx-auto mb-12 rounded-full gsap-reveal"></div>
+                <div className="max-w-4xl mx-auto border-l border-cyan-400/30 pl-6 sm:pl-8 space-y-10">
+                  {experience.map((item) => (
+                    <article key={item.role} className="relative gsap-slide-right">
+                      <span className="absolute -left-[2.05rem] sm:-left-[2.55rem] top-1.5 w-3 h-3 rounded-full bg-cyan-300 ring-4 ring-slate-900"></span>
+                      <p className="text-sm text-cyan-300 font-semibold tracking-wide">{item.period}</p>
+                      <h3 className="text-xl font-bold text-slate-100 mt-1">{item.role}</h3>
+                      <p className="text-slate-400 mt-1">{item.company}</p>
+                      <p className="text-slate-300 mt-3 leading-relaxed">{item.description}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+
             {/* Projects Section */}
             <AnimatedSection id="projects" className="py-12 sm:py-16 md:py-20 bg-slate-900">
               <div className="max-w-6xl mx-auto px-4 sm:px-6">
                 <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">
-                  My Projects
+                  Featured Projects
                 </h2>
                 <div className="w-28 h-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 mx-auto mb-12 rounded-full gsap-reveal"></div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-                  {projects.map((project, index) => (
+                  {featuredProjects.map((project, index) => (
                     <div
                       key={project.id}
                       className="project-card bg-slate-900/70 backdrop-blur rounded-2xl overflow-hidden shadow-xl shadow-cyan-900/40 border border-slate-800 gsap-fade h-full flex flex-col"
                       style={{ transitionDelay: `${index * 0.1}s` }}
                     >
                       <div className="card-inner flex-1 flex flex-col">
-                        <img
-                          src={project.image}
-                          alt={project.alt}
-                          className="w-full h-40 sm:h-48 object-cover"
-                          loading="lazy"
-                          onError={(e) => {
-                            e.target.onerror = null;
-                            e.target.src = "https://placehold.co/600x400";
-                          }}
-                        />
+                        {project.image ? (
+                          <img
+                            src={project.image}
+                            alt={project.alt}
+                            className="w-full h-48 sm:h-56 object-cover"
+                            loading="lazy"
+                          />
+                        ) : (
+                          <div className="w-full h-48 sm:h-56 bg-gradient-to-br from-slate-800 via-slate-900 to-cyan-950/60 flex flex-col items-center justify-center border-b border-cyan-400/20" role="img" aria-label={project.alt}>
+                            <span className="text-4xl text-cyan-300/80 font-mono">{project.title.startsWith("UAV") ? "↗" : "◉"}</span>
+                            <span className="mt-3 text-xs uppercase tracking-[0.2em] text-slate-400">Technical preview</span>
+                          </div>
+                        )}
                         <div className="p-4 sm:p-6 flex flex-col flex-1">
-                          <h3 className="text-lg sm:text-xl font-bold mb-2 text-slate-100">
-                            {project.title}
-                          </h3>
+                          <div className="flex items-start justify-between gap-3 mb-2">
+                            <div>
+                              <h3 className="text-lg sm:text-xl font-bold text-slate-100">{project.title}</h3>
+                              <p className="text-sm text-cyan-300 mt-1">{project.subtitle}</p>
+                            </div>
+                            <span className="text-xs text-slate-400 whitespace-nowrap">{project.year}</span>
+                          </div>
                           <p className="text-sm sm:text-base text-slate-300 mb-4 flex-1">
                             {project.description}
                           </p>
+                          {project.result && <p className="text-sm text-emerald-300/90 border-l-2 border-emerald-400 pl-3 mb-4">{project.result}</p>}
                           <div className="flex flex-wrap gap-2 mb-4">
                             {project.tags.map((tag, index) => (
                               <span
@@ -980,27 +886,70 @@
                               </span>
                             ))}
                           </div>
-                          <div className="mt-4 flex space-x-3">
-                            <a
-                              href={project.liveLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-sm px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 text-white font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/60 transition-all"
-                            >                              View Project
-                            </a>
-                            <a
-                              href={project.sourceCode}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-sm border border-cyan-400 text-cyan-200 px-4 py-2 rounded-full font-semibold hover:bg-cyan-500/20 transition-all"
-                            >
-                              Source Code
-                            </a>
+                          <div className="mt-4 flex flex-wrap gap-3">
+                            {project.liveLink && project.liveLink !== "#" && <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="text-sm px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 text-white font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/60 transition-all">View Project</a>}
+                            {project.sourceCode && project.sourceCode !== "#" && <a href={project.sourceCode} target="_blank" rel="noopener noreferrer" className="text-sm border border-cyan-400 text-cyan-200 px-4 py-2 rounded-full font-semibold hover:bg-cyan-500/20 transition-all">Source Code</a>}
                           </div>
                         </div>
                       </div>
                     </div>
                   ))}
+                </div>
+                <div className="mt-20">
+                  <h3 className="text-xl sm:text-2xl font-semibold mb-8 text-slate-100 gsap-reveal">More Projects</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {moreProjects.map((project) => (
+                      <article key={project.id} className="bg-slate-950/60 border border-slate-800 rounded-xl p-4 gsap-fade">
+                        {project.image ? (
+                          <img src={project.image} alt={project.title} className="w-full h-32 object-cover rounded-lg mb-4" loading="lazy" />
+                        ) : (
+                          <div className="w-full h-32 rounded-lg mb-4 bg-gradient-to-br from-slate-800 via-slate-900 to-cyan-950/60 flex items-center justify-center border border-cyan-400/20" role="img" aria-label={`${project.title} technical placeholder`}>
+                            <span className="text-xs uppercase tracking-[0.2em] text-cyan-300">Peshori Systems</span>
+                          </div>
+                        )}
+                        <div className="flex justify-between gap-3">
+                          <h4 className="font-semibold text-slate-100">{project.title}</h4>
+                          <span className="text-xs text-slate-400">{project.year}</span>
+                        </div>
+                        <p className="text-sm text-slate-400 mt-2">{project.description}</p>
+                        <div className="flex flex-wrap gap-1.5 mt-3">{project.tags.map((tag) => <span key={tag} className="text-[11px] text-cyan-300 bg-cyan-500/10 px-2 py-1 rounded">{tag}</span>)}</div>
+                        <div className="flex gap-3 mt-4">{project.liveLink !== "#" && <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="text-xs text-cyan-300 hover:text-cyan-100">Live project</a>}{project.sourceCode !== "#" && <a href={project.sourceCode} target="_blank" rel="noopener noreferrer" className="text-xs text-cyan-300 hover:text-cyan-100">Source code</a>}</div>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection id="leadership" className="py-12 sm:py-16 md:py-20 bg-slate-950">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6">
+                <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">Leadership &amp; Community</h2>
+                <div className="w-28 h-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 mx-auto mb-12 rounded-full gsap-reveal"></div>
+                <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
+                  {[
+                    ["Vice President - Computer Cell, UET Peshawar", "2026 - Present", "Lead society planning and cross-team execution for technical initiatives and student engagement; previously served as Robotics Head and helped organize the national-level TechMesh 26 event."],
+                    ["Social Media & Marketing Director - IEEE UET Peshawar", "2025 - 2026", "Directed digital promotion, content planning, and event awareness campaigns for IEEE activities."],
+                    ["Management Head / Co-Founder - RAS and Robotics Automation Community", "2024 - 2025", "Coordinated teams and operations for robotics activities spanning line-following, off-road, sumo, robo-futsal, and Antbot modules."],
+                  ].map(([title, period, description]) => <article key={title} className="border border-slate-800 rounded-2xl p-5 gsap-scale"><p className="text-xs text-cyan-300">{period}</p><h3 className="font-semibold text-slate-100 mt-2">{title}</h3><p className="text-sm text-slate-400 mt-3 leading-relaxed">{description}</p></article>)}
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection id="education" className="py-12 sm:py-16 md:py-20 bg-slate-900">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6">
+                <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">Education &amp; Training</h2>
+                <div className="w-28 h-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 mx-auto mb-12 rounded-full gsap-reveal"></div>
+                <div className="grid lg:grid-cols-2 gap-6">
+                  <div className="space-y-4 gsap-slide-left">
+                    <article className="border border-slate-800 rounded-2xl p-5"><p className="text-cyan-300 text-sm">2023 - 2027 (Expected)</p><h3 className="text-lg font-semibold text-slate-100 mt-2">Bachelor of Science in Computer Science</h3><p className="text-slate-400">University of Engineering &amp; Technology, Peshawar</p><p className="text-sm text-slate-400 mt-3">Data Structures &amp; Algorithms, Databases, Software Engineering, Artificial Intelligence, Operating Systems, Computer Networks, Applied Machine Learning, Information Security, Internet of Things, Compiler Construction, Numerical Analysis</p></article>
+                    <article className="border border-slate-800 rounded-2xl p-5"><p className="text-cyan-300 text-sm">2021 - 2023 · Grade A</p><h3 className="text-lg font-semibold text-slate-100 mt-2">FSc Pre-Engineering</h3><p className="text-slate-400">Islamia College Peshawar</p></article>
+                    <article className="border border-slate-800 rounded-2xl p-5"><p className="text-cyan-300 text-sm">Grade A · Top-10 position in Peshawar Board</p><h3 className="text-lg font-semibold text-slate-100 mt-2">Matriculation</h3><p className="text-slate-400">Peshawar Model School Boys 3</p></article>
+                  </div>
+                  <div className="space-y-4 gsap-slide-right">
+                    <article className="border border-slate-800 rounded-2xl p-5"><h3 className="font-semibold text-slate-100">One-Year MERN Stack Program</h3><p className="text-slate-400">Saylani Mass IT Training (SMIT) · Completed 2026</p></article>
+                    <article className="border border-slate-800 rounded-2xl p-5"><h3 className="font-semibold text-slate-100">Introduction to Software Engineering</h3><p className="text-slate-400">IBM / Coursera · Completed August 2025</p></article>
+                    <article className="border border-slate-800 rounded-2xl p-5"><h3 className="font-semibold text-slate-100">Three-Month Artificial Intelligence Training</h3><p className="text-slate-400">Arfa Karim Technology Incubation Center · In Progress, 2026</p><p className="text-sm text-slate-400 mt-2">Machine Learning, Deep Learning, Neural Networks, Generative AI</p></article>
+                  </div>
                 </div>
               </div>
             </AnimatedSection>
@@ -1009,14 +958,14 @@
             <AnimatedSection id="contact" className="py-12 sm:py-16 md:py-20 bg-slate-950">
               <div className="max-w-6xl mx-auto px-4 sm:px-6">
                 <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 text-slate-100 gsap-reveal">
-                  Get In Touch
+                  Have a problem worth solving?
                 </h2>
                 <div className="w-28 h-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-sky-500 mx-auto mb-12 rounded-full gsap-reveal"></div>
 
                 <div className="flex flex-col md:flex-row gap-8 md:gap-12">
                   <div className="md:w-1/2 gsap-slide-left">
                     <h3 className="text-xl sm:text-2xl font-semibold mb-6 text-slate-100">
-                      Contact Information
+                      Whether you need a full-stack product, an AI-powered feature, an IoT prototype, or a technical MVP, let's turn the idea into something real.
                     </h3>
                     <div className="space-y-6">
                       <div className="flex items-start">
@@ -1039,30 +988,8 @@
                         <div>
                           <h4 className="font-medium text-slate-200">Email</h4>
                           <p className="text-slate-300">
-                            afnan.muhmd54@gmail.com
+                            <a href="mailto:afnan.abid54@gmail.com" className="hover:text-cyan-300">afnan.abid54@gmail.com</a>
                           </p>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="bg-cyan-500/10 border border-cyan-400/30 p-3 rounded-xl mr-4">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6 text-cyan-300"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                            />
-                          </svg>
-                        </div>
-                        <div>
-                          <h4 className="font-medium text-slate-200">Phone</h4>
-                          <p className="text-slate-300">+92 3141858209</p>
                         </div>
                       </div>
                       <div className="flex items-start">
@@ -1102,7 +1029,7 @@
                       </h4>
                       <div className="flex space-x-4">
                         <a
-                          href="https://www.linkedin.com/in/muhammad-afnan-033273373/"
+                          href="https://linkedin.com/in/afnan-codes"
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label="LinkedIn"
@@ -1131,21 +1058,6 @@
                             viewBox="0 0 24 24"
                           >
                             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                          </svg>
-                        </a>
-                        <a
-                          href="#"
-                          target="_blank"
-                          className="bg-cyan-500/10 border border-cyan-400/30 p-3 rounded-full hover:bg-cyan-500/20 transition-colors"
-                        >
-                          {/* Twitter SVG */}
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 text-cyan-300"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                           </svg>
                         </a>
                       </div>
@@ -1223,15 +1135,17 @@
               <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
                 <div className="flex justify-center mb-4 sm:mb-6">
                   <span className="text-xl sm:text-2xl font-bold text-cyan-400">
-                    Portfolio
+                    Muhammad Afnan
                   </span>
                 </div>
+                <p className="text-cyan-300 text-sm mb-2">AI/ML &amp; Full-Stack Engineer</p>
+                <p className="text-slate-400 text-sm mb-4">Peshawar, Pakistan</p>
                 <p className="mb-4 sm:mb-6 text-slate-400 text-sm sm:text-base">
                   © {year} All Rights Reserved
                 </p>
                 <div className="flex justify-center space-x-4 sm:space-x-6">
                   <a
-                    href="https://www.linkedin.com/in/muhammad-afnan-033273373/"
+                    href="https://linkedin.com/in/afnan-codes"
                     target="_blank"
                     className="text-slate-500 hover:text-cyan-300 transition-colors"
                   >
@@ -1259,7 +1173,8 @@
                     </svg>
                   </a>
                   <a
-                    href="#"
+                    href="mailto:afnan.abid54@gmail.com"
+                    aria-label="Email"
                     className="text-slate-500 hover:text-cyan-300 transition-colors"
                   >
                     <svg
